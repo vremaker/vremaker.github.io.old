@@ -13,6 +13,7 @@
     min.addEventListener("click", function(){
         main.classList.toggle('active');
     });
+    
   }
 
 
