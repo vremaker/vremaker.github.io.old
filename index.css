@@ -7,6 +7,11 @@
   margin: 0;
 }
 
+h2 {
+  font-size: 30pt;
+  text-align: center;
+  font-family: "Big Shoulders Display", sans-serif;
+}
 html {
   width: 100%;
 }
@@ -22,9 +27,17 @@ main {
 
 /*button styling */
  .button {
-   margin-top: 10px;
+  color: white;
+  font-size: 12pt;
+  border-radius:28px;
+	border:1px solid;
+	display:inline-block;
+	cursor:pointer;
+	padding:10px 20px;
+	text-decoration:none;
+  margin: 5px;
    background-color: #c46e83;
-   text-decoration: none;
+   text-align: center;
  }
 
 /* BEGIN NAV BAR STYLE */
@@ -141,7 +154,7 @@ main {
   margin-right: 5%;
 }
 
-#landing h2 {
+h2 {
   font-family: "Open Sans Condensed", sans-serif;
 }
 
@@ -191,9 +204,6 @@ main {
   width: 60%;
    border: solid black 1px;
   margin-top: 20px;
-}
-#resume a {
-  border-radius: 25%;
 }
 
 /*applied to multiple sections */
@@ -446,3 +456,129 @@ main {
   }
 }
  
+/*contact form */
+
+/* BEGIN STYLE CONTACT SECTION */
+
+#contact {
+  border-top:40px solid white; 
+  background-color: white;
+  text-align: center;
+  align-items: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  min-height:100%;
+}
+
+
+#flexy {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 5%;
+}
+
+#sm {
+  width: 40%;
+}
+
+#contact > form {
+  margin-top: 5px;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 5px;
+  width: 80%;
+}
+
+/* END STYLE CONTACT SECTION */
+
+/* BEGIN STYLING FOR THE MAIL FORM */
+input[id=first],
+input[id=last] {
+  width: 50%;
+}
+
+input[type=email],
+input[id=sub],
+textarea {
+  width: 100%;
+}
+
+textarea {
+  height: 150px;
+}
+
+textarea,
+input[type=email],
+input[id=sub],
+input[id=first],
+input[id=last] {
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+  font-size: 12pt;
+}
+
+#names {  /* for first and last name entry boxes */
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+}
+
+#mail, #landing h2 {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 15pt;
+}
+
+@media screen and (max-width: 1120px) {
+  #flexy {
+    flex-flow: column;
+  }
+}
+
+#sm {
+  font-size: 13pt;
+}
+
+#sm > p {
+  padding: 5%;
+  padding-top: 0;
+  font-size: 15pt;
+}
+
+#sm > a {
+  text-align : center;
+   text-decoration: none;
+   color: black;
+   font-size: 30px;
+   padding:  5px;
+
+}
+
+#email h3 {
+  padding-bottom: 10px;
+  font-size: 20pt;
+}
+
+#sm h3 {
+  font-size: 20pt;
+  margin-top: 0px;
+}
+
+
+@media screen and (max-width: 1120px) {
+  #sm {
+    width: 80%;
+    margin-bottom: 40px;
+  }
+}
+/* END STYLING FOR CONTACT  FORM */
+
+
+#landing h2 {
+  font-size: 15pt; 
+  font-family: "Open Sans Condensed", sans-serif;
+}
