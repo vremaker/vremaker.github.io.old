@@ -1,5 +1,5 @@
 p {
-    font-size: 15pt;
+    font-size: 12spt;
     padding-top: 10px;
     padding-bottom:10px;
 }
@@ -22,10 +22,11 @@ img {
     width: 30%;
     padding-right:50px;
     margin: 0;
+    font-size: 12pt;
 }
 
 #owlLogo {
-    width:15%;
+    width:10%;
 }
 
 #bleep {
@@ -71,7 +72,7 @@ hr {
 /*#interview h2, #observ h2, #comp h2, #persona h2 { */
 h2 { 
     text-align: left;
-    font-size: 20pt;
+    font-size: 16pt;
 }
 
 #pitch h2 {
@@ -157,7 +158,7 @@ h2 {
         width: 60%;
     }
     p {
-        font-size: 12pt;
+        font-size: 10pt;
     }
 }
 
@@ -202,6 +203,7 @@ h2 {
         height:  350px;
         Width: 250px;
     }
+
 }
 
 #high {
