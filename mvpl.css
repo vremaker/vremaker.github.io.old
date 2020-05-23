@@ -1,0 +1,124 @@
+p {
+    font-size: 15pt;
+}
+img {
+     width: 80%;
+     margin-left:auto;
+     margin-right:auto;
+}
+
+#home-screen {
+    width: 30%;
+    padding-right:50px;
+    margin: 0;
+}
+
+#owlLogo {
+    width:15%;
+}
+
+#home {
+    min-height: 80%;
+    width: 80%;
+    display: flex;
+    flex-flow: row nowrap;
+    margin-left:auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+    border-top:60px solid white;
+}
+
+#info {
+    text-align: center;
+    width: 40%;
+    
+}
+
+#interview a, #observ a {
+    margin: 1%;
+}
+
+hr {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#prob {
+    text-align: center;
+    padding-top: 40px;
+}
+
+#interview, #observ {
+    width: 50%;
+    margin-left:auto;
+    margin-right:auto;
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+#interview h2, #observ h2 {
+    text-align: center;
+}
+
+#interview li, #observ li {
+    padding-left: 50px;
+    list-style-type: none;
+}
+
+#interview ul, #interview p {
+    padding-top: 10px;
+}
+
+.ca, #observ a {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+#observ a {
+    margin-top: 10px;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#observ img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+@media screen and (max-width: 992px) {
+    #home {
+      height: 100%;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #home-screen {
+        display: none;
+    }
+
+    #interview {
+         padding: 40px;
+    }
+
+    #interview h2 {
+         padding:0;
+    }
+    #interview, #observ {
+        width: 70%;
+    }
+
+    #info {
+        text-align: center;
+        width: 60%;
+    }
+    p {
+        font-size: 12pt;
+    }
+}

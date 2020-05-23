@@ -6,7 +6,7 @@
   <script src="index.js"></script>
   <script src="mail.js"></script>
   <script src="https://kit.fontawesome.com/ffdd2dcd0f.js"></script>
-  <title> Whale Hello </title>
+  <title> Valerie Remaker </title>
 </head>
 <body>
   <header>
@@ -15,127 +15,120 @@
   <main>
 
     <nav class="navbar">
-      <span class="navbar-toggle" id="js-navbar-toggle">
-        <i class="fas fa-bars"></i>
-      </span>
+      <i class="navbar-toggle fas fa-bars" id="js-navbar-toggle"></i>
       <a href="#landing" class="logo">VR</a>
       <ul class="main-nav" id="js-menu">
         <li>
-          <a target="_blank" href="https://drive.google.com/file/d/1tKyVOSgM-6hn9jdJob0X6i1IwXo6jgqn/view?usp=sharing" class="nav-links">Resume</a>
+          <a href="#portfolio" class="nav-links">My Work</a>
         </li>
         <li>
           <a href="#about" class="nav-links">About Me</a>
         </li>
         <li>
-          <a href="#portfolio" class="nav-links">My Work</a>
+          <a href="#resume" class="nav-links">Resume</a>
+        </li>
+       
+      
+        <li>
+          <a href="#contact" class="nav-links">Let's Connect!</a>
         </li>
       </ul>
     </nav>
 
-
+  <!--LANDING -->
     <section id="landing">
-
       <div id="front-text">
-        <img class="logo" src="logo.png" alt="a whale logo" />
+        <img class="valLogo" src="logo.png" alt="a whale logo" />
         <h1> Hi There! I'm Valerie Remaker </h1>
-        <h2> Educator - Programmer - Designer </h2>
+        <h2> I'm a Human Centered Designer </h2>
         <div class="box"><span></span></div>
       </div>
-      <img id="val" src="image.png" alt="this is Valerie's face" />
+      <img id="val" src="sketch.png" alt="this is Valerie's face" />
     </section>
 
-
-    <section id="portfolio">
-
-      <h2>Take a Look at Some of The Projects I've Made!</h2>
-      <ul> 
-        <li>All</li>
-        <li>Design</li>
-        <li>WebDevelopment</li> 
-      </ul>
-
-      <div id="port">
-        <!-- <nav>
-        <ul>
-        <li>All Projects</li>
-        <li>Web Development</li>
-        <li>Design Projects</li>
-        <li>Design Projects</li>
-      </ul>
-    </nav> -->
    
 
+    <!--PORTFOLIO-->
+    <section id="portfolio">
+      <h2> Take a Look at Some of My Favorite Projects</h2> 
+      <div id="wrapper">
+        <div class="image-container">
+          <img src="cg-tile.jpg" alt="Common Ground" />
+          <div class="image-caption">
+            <p> Finalist in the HCDE Democracy Design Jam. Focused on 
+              uniting people rather than dividing them. 
+            </p>
+          </div>
+        </div>
+        <div class="image-container">
+          <img src="owl.jpg" alt="Night Owl" />
+          <div class="image-caption">
+            <p>An app designed to keep UW Students safe while walking around at night</p>
+          </div>
+        </div>
+        <div class="image-container">
+          <img src="workbook.png" alt="HCDE User Centered Design Workbook"/>
+          <div class="image-caption">
+            <p> A workbook on User Centered Design for students  
+              stuck at home during covid-19 
+            </p>
+          </div>
+        </div>
+        <div class="image-container">
+          <img src="cat.jpg" alt="an image of a black cat with the text felin e groovy" />
+          <div class="image-caption">
+            <p> An exploration of the reddit API to create a cat
+              themed picture feed website
+            </p>
+          </div>
+        </div>
+        <div class="image-container">
+          <img src="pace.jpg" alt="pace" />
+          <div class="image-caption">
+            <p> An application designed to increase classroom engagement; created using Kotlin.
+            </p>
+          </div>
+        </div>
+        <div class="image-container">
+          <img src="puns.jpg" alt="cse pun fifty four" />
+          <div class="image-caption">
+            <p> An exploration of php to create an API that returns original 
+              name puns for everyone in the CSE154 class at UW
+            </p>
+          </div>
+        </div>
+        <div class="image-container">
+          <img src="feeling.png" alt="feeling feed" />
+          <div class="image-caption">
+            <p> An image feed moderated by what mood you are in. Created for Dubhacks 2018
+            </p>
+          </div>
+        </div>
+      </div>
+      </div>
+      
+      </div>
+    </section>
 
+     <!--ABOUT-->
+     <section id="about">
+      <div class="small-col">
+        <h2> It's nice to meet you! </h2>
+        <h3> I'm Valerie</h3>
+        <img src="gamerCrop.jpg" alt="valerie's face"/>
+      </div>
+    </section>
+
+    <!--RESUME-->
+    <section id="resume" class="">
+      <h2>My Resume</h2>
+      <img src="resume.jpg" alt="valerie's resume"/>
+      <a target="_blank" href="https://drive.google.com/file/d/1SdamkOjrAwPNdDPxSAEk9XbRxv8YUzee/view?usp=sharing"> Download my resume </a>
+    </section>
+    
+     <!--CONTACT-->
+     <section id="contact">
+    </section>
 </main>
 </body>
 </html>
-
-<!--  portfolio section with buttons 
-   <div id="i-made-it">
-      <
-      <div class="project">
-        <h3>NightOwl</h3>
-        <p>
-          As a team of 4, we applied the user centered design
-          process to the problem area of the danger of walking alone at night
-          for students. The process culminated in a mobile application called NightOwl.
-          I made this website myself to display our work.
-        </p>
-        <a class="button" target="_blank" href="https://students.washington.edu/vremaker/MVPL"> View It Here </a>
-
-      </div>
-      <div class="project">
-        <h3> Feline Groovy </h3>
-        <p>
-          This was one of the first Javascript programs that I created! Using
-          the Reddit API, this website displays a selection of either memes or
-          cute cat photos for when you are feeling down.
-        </p>
-        <a class="button" target="_blank" href="https://students.washington.edu/vremaker/felineGroovy"> View It Here </a>
-
-      </div>
-      <div class="project">
-        <h3> CSE154 Name Pun Generators </h3>
-        <p>
-          Using PHP, HTML, CSS and JS I created an API that takes in a name of a student
-          enrolled in the CSE154 class at the University of Washington
-          (as well as TA's and other teaching staff) and returns a pun about that person's name.
-        </p>
-        <div id="multi-btns">
-          <br />
-        <a class="button" target="_blank" href="https://students.washington.edu/vremaker/NamePunsAu18">Au2018</a>
-        <a class="button" target="_blank" href="https://students.washington.edu/vremaker/NamePunsSp19">Sp2019</a>
-      </div>
-      </div>
-      <div class="project">
-        <h3> Kailey's Website </h3>
-        <p>
-          This was the first portfolio website I created for someone else. It
-          includes a virtual resume, reference information, an email form as well
-          as links to her social media.
-        </p>
-        <a class="button" target="_blank" href="https://students.washington.edu/vremaker/Kailey/"> View it Here </a>
-      </div>
-      <div class="project">
-        <h3> Feeling Feed </h3>
-        <p>
-          This was the final project created by my Team at Dubhacks 2018. We
-          created a platform where you could look at memes catered to how you are
-          feeling on a particular day using the Flickr API.
-        </p>
-        <a class="button" target="_blank" href="https://students.washington.edu/vremaker/dubhacks2018/landing.html"> View it Here </a>
-      </div>
-      <div class="project">
-        <h3> Pace: A Classroom Engagement Application </h3>
-        <p>
-          This project was created as the final project for an Android app develoment
-          course at The University of Washington. This is meant to provide resources
-          for students and teachers alike with reviews of professors, classroom
-          chatrooms and group making functionality.
-        </p>
-        <a class="button" target="_blank" href="https://play.google.com/store/apps/details?id=edu.washington.info448.pace"> View it in the Google Play Store! </a>
-      </div>
-    </div>
-  </div>
-</section>
--->

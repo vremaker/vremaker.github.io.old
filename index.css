@@ -19,33 +19,21 @@ main {
   margin: 0;
 }
 
-/*.button {
-  background:rgb(117, 114, 140);
-  border-radius: 100px;
-  padding: 5px 10px;
-  margin: 20px;
-  color: white;
-  text-decoration: none;
-  font-size: 12pt;
-}
 
-button {
-  border-radius: 100px;
-  padding: 10px 10px;
-  color: white;
-  text-decoration: none;
-  font-size: 10pt;
-  background-color:rgb(117, 114, 140) ;
-  padding: 10px 30px;
-  font-family: "Open Sans Condensed", sans-serif;
-}*/
-/* END STYLE THAT APPLIES TO WHOLE PAGE */
+/*button styling */
+ .button {
+   margin-top: 10px;
+   background-color: #c46e83;
+   text-decoration: none;
+ }
 
 /* BEGIN NAV BAR STYLE */
 .navbar {
+  /*font-family: "Big Shoulders Display", sanserif;*/
+  padding:0;
+  z-index: 1;
   font-size: 18px;
   background-color: #c46e83;
-  padding-bottom: 10px;
   position: fixed;
   width: 100%;
 }
@@ -67,8 +55,7 @@ button {
 }
 
 .logo {
-  display: inline-block;
-  font-size: 22px;
+  font-size: 28px;
   margin-top: 10px;
   margin-left: 20px;
 }
@@ -86,44 +73,33 @@ button {
   display: block;
 }
 
+#js-navbar-toggle{
+  display: block;
+}
 /** RESPONSIVE STYLE FOR NAV BAR */
 @media screen and (min-width: 1120px) {
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    align-items: center;
+
+  #js-navbar-toggle{
+    display: none;
   }
 
   .main-nav {
     display: flex;
-    margin-right: 30px;
-    flex-direction: row;
-    justify-content: flex-end;
+    width: 50%;
+    justify-content: space-around;
+    flex-flow: row nowrap;
   }
 
-  .main-nav li {
-    margin: 0;
-  }
 
-  .nav-links {
-    margin-left: 40px;
-  }
-
-  .logo {
-    margin-top: 0;
-  }
-
-  .navbar-toggle {
-    display: none;
-  }
-
-  .logo:hover,
-  .nav-links:hover {
-    color: rgba(255, 255, 255, 1);
+  .navbar {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    height: auto;
+    width: 100%;
+    padding-bottom: 0px;
   }
 }
-
 /* END NAV BAR STYLE */
 
 /** BEGIN STYLE FOR THE LANDING PORTION OF THE PAGE */
@@ -136,20 +112,24 @@ button {
   background-size: cover;
   margin: 0;
   height: 100%;
+  
   text-align: center;
   background:#c46e83;
+  border-top:40px solid #c46e83; 
+
 }
 
 #val {
   align-self: flex-end;
-  width: 35%;
+  margin-right:20px;
+  width: 26%;
 }
 
 #front-text {
   width: 60%;
 }
 
-.logo {
+.valLogo {
   align-self: center;
   height: 100px;
 }
@@ -169,6 +149,7 @@ button {
   font-family: "Open Sans", sans-serif;
 }
 
+/*for desktop */
 @media screen and (max-width: 1120px) {
   #landing {
     flex-flow: column;
@@ -187,8 +168,70 @@ button {
 
 /* END  basic styling for landing page */
 
-/* BEGIN Style for the scroll indicator */
+/*
+ border-top:60px solid #fff; 
 
+  border-top: 40px solid white; 
+*/
+/*border for all anchor links */ 
+#resume, #about, #portfolio #contact {
+  min-height: 100%;
+  border-top:60px solid white; 
+  display:flex;
+}
+
+#resume {
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#resume img{
+  height: auto;
+  width: 60%;
+   border: solid black 1px;
+  margin-top: 20px;
+}
+#resume a {
+  border-radius: 25%;
+}
+
+/*applied to multiple sections */
+
+
+
+/* BEGIN PORTFOLIO STYLE */
+
+
+
+/*END PORTFOLIO SECTION*/
+
+/*BEGIN ABOUTR */
+
+/*End about */
+
+/*being contact */
+/*end contact*/ 
+
+
+
+/*border bottom for the resume about port and contact pages  and landing */ 
+/*for mobile  */
+@media screen and (max-width: 1120px) {
+  #resume, #about, #portfolio, #contact {
+    width: 90%;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  #resume img {
+    width: 95%;
+    height:auto;
+    margin-bottom:2%;
+  }
+}
+
+/* BEGIN Style for the scroll indicator */
 /* TODO MAKE THE SCROLL INDIATOR NOT VISIBE OVER NAV **/
 .box span {
   position: absolute;
@@ -238,16 +281,168 @@ button {
 
 /* END STYLE FOR SCROLL INDICATOR ANIMATION */
 
-/* BEGIN STYLE APPLIED TO Multiple */
 
-#portfolio h2,
-#about h2 {
-  font-family: "Big Shoulders Display", sans-serif;
-  font-size: 30pt;
-  padding-bottom: 2%;
-  color: rgb(117, 114, 140);
+#wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left:auto;
+  margin-right:auto;
+  width: 95%;
+  justify-content: center;
+  overflow: hidden;
 }
 
 
-/* END STYLE APPLIED TO Muliple */
+.image-container {
+  float: left;
+  vertical-align: middle;
+  width: 500px;
+  height: 500px;
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+}
 
+.image-container img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+
+.image-caption {
+    vertical-align: middle;
+    margin-top:auto;
+    margin-bottom:auto;
+  width: 100%;
+  height: 100%;
+  background: rgba(196, 110, 132, 0.9);
+  position: relative;
+  color:white;
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  -ms-transition: all 300ms ease-in-out;
+}
+
+
+.image-caption p {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 50%;
+  height: 30%;
+  margin: -15% 0 0 -25%;
+  text-align: center;
+  font-size: 25pt;
+}
+
+.image-container:hover .image-caption {
+  opacity: 1;
+}
+
+
+
+#portfolio {
+  background-color: white;
+  min-height: 100%;
+ border-top: 60px solid white; 
+
+}
+
+#portfolio h2 {
+  font-size: 30pt;
+  text-align: center;
+  margin-bottom: 50px;
+  font-family: "Big Shoulders Display", sans-serif;
+}
+
+/*EEEEEEEEPPP*/
+
+@media all and (min-width: 0px) and (max-width: 600px) {
+  #wrapper {
+    flex-flow: column wrap;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .image-container {
+    width: 450px;
+    height: 450px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .image-caption p {
+    font-size: 20pt;
+  }
+}
+@media all and (min-width: 0px) and (max-width: 520px) {
+  .image-container {
+    width: 350px;
+    height: 350px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .image-caption {
+    font-size: 12pt;
+  }
+}
+@media all and (min-width: 0px) and (max-width: 400px) {
+  .image-container {
+    width: 300px;
+    height: 300px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .image-caption p{
+    font-size: 15pt;
+  }
+}
+@media all and (min-width: 0px) and (max-width: 350px) {
+  .image-container {
+    width: 250px;
+    height: 250px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .image-caption p{
+    font-size: 12pt;
+  }
+}
+
+@media all and (min-width: 0px) and (max-width: 300px) {
+  .image-container {
+    width: 200px;
+    height: 200px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .image-caption p{
+    font-size: 10pt;
+  }
+}
+
+@media all and (min-width: 0px) and (max-width: 260px) {
+  .image-container {
+    width: 200px;
+    height: 200px;
+    margin-left:auto;
+    margin-right:auto;
+  } .image-caption p{
+    font-size: 10pt;
+  }
+}
+
+@media all and (min-width: 0px) and (max-width: 200px) {
+  .image-container {
+    width: 150px;
+    height: 150px;
+    margin-left:auto;
+    margin-right:auto;
+  } .image-caption p{
+    font-size: 8pt;
+  }
+}
+ 

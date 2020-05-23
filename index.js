@@ -2,7 +2,10 @@
   "use strict";
 
   window.addEventListener("load", init);
-
+  //Links to all of the projects in order that they appear in the css 
+  let links = ["cg.html","nightowl.html", "k-12wb.html",
+  "https://students.washington.edu/vremaker/felineGroovy/",
+  "https://play.google.com/store/apps/details?id=edu.washington.info448.pace","https://students.washington.edu/vremaker/NamePunsSp19/", "https://students.washington.edu/vremaker/dubhacks2018/landing.html"];
   function init() {
     let menu = qs(".navbar-toggle");
     let min = id("js-menu");
@@ -13,7 +16,17 @@
     min.addEventListener("click", function(){
         main.classList.toggle('active');
     });
-    
+
+    let tiles = qsa(".image-container");
+    for(let i = 0; i < tiles.length; i ++) {
+      tiles[i].addEventListener("click", function() {
+        console.log(links[i].substr(0,3));
+        if(links[i].substring(0,3) === "htt") {
+          window.open(links[i], '_blank');
+        } else {
+          window.open(links[i], '_self');        }
+      })
+    }
   }
 
 
