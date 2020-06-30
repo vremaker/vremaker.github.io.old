@@ -314,14 +314,14 @@ h2 {
   margin-left: -12px;
   border-left: 3px solid #fff;
   border-bottom: 3px solid #fff;
- /* -webkit-transform: rotateZ(-45deg);
- /* transform: rotateZ(-45deg);*/
+  -webkit-transform: rotateZ(-45deg);
+  transform: rotateZ(-45deg);
   -webkit-animation: sdb06 1.5s infinite;
   animation: sdb06 2s infinite;
   box-sizing: border-box;
 }
 
-/* @-webkit-keyframes sdb06 {
+@-webkit-keyframes sdb06 {
   0% {
     -webkit-transform: rotateY(0) rotateZ(-45deg) translate(0, 0);
     opacity: 0;
@@ -351,7 +351,7 @@ h2 {
     transform: rotateY(720deg) rotateZ(-45deg) translate(-20px, 20px);
     opacity: 0;
   }
-} */
+} 
 
 /* END STYLE FOR SCROLL INDICATOR ANIMATION */
 
