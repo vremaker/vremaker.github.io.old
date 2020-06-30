@@ -302,7 +302,7 @@ h2 {
   margin-left: 0;
   font-size:14pt;
 
-  }
+
 }
 
 /* BEGIN Style for the scroll indicator */
@@ -351,7 +351,7 @@ h2 {
     transform: rotateY(720deg) rotateZ(-45deg) translate(-20px, 20px);
     opacity: 0;
   }
-} 
+}
 
 /* END STYLE FOR SCROLL INDICATOR ANIMATION */
 
