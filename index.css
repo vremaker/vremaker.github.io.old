@@ -42,6 +42,7 @@ main {
   padding:0;
   top: 0;
   z-index: 1;
+  width: 100%;
   font-size: 18pt;
   background-color: #c46e83;
   position: fixed;
@@ -51,7 +52,9 @@ main {
   justify-content: space-between;
   align-items: center;
 }
-
+.hidden {
+  display: none;
+}
 .main-nav {
   list-style-type: none;
   display: none;
@@ -69,9 +72,7 @@ main {
 }
 
 .logo {
-
-  left: 20px;
-
+  left: 28px;
 }
 
 .navbar-toggle {
@@ -542,7 +543,7 @@ h2 {
   justify-content: space-around;
   flex-flow: row nowrap;
   align-items: center;
-  margin: 5%;
+  padding:5%;
 }
 
 #sm {
@@ -555,6 +556,13 @@ h2 {
   margin-right: 20%;
   margin-bottom: 5px;
   width: 80%;
+}
+
+#contact {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* END STYLE CONTACT SECTION */
