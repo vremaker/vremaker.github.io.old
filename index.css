@@ -217,7 +217,7 @@ h2 {
 
 
 #about img {
-  width: 30%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -284,7 +284,7 @@ h2 {
 /*for mobile  */
 @media screen and (max-width: 1120px) {
   #resume, #about, #portfolio, #contact {
-    width: 90%;
+    width: 97%;
     margin-left:auto;
     margin-right:auto;
     align-items: center;
