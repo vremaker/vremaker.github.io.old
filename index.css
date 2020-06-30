@@ -39,7 +39,6 @@ main {
 /* BEGIN NAV BAR STYLE */
 .navbar {
   /*font-family: "Big Shoulders Display", sanserif;*/
-  padding-top:1%;
   padding-bottom: 1%;
   z-index: 1;
   font-size: 18pt;
@@ -90,12 +89,14 @@ main {
 
 #js-navbar-toggle{
   display: block;
+  padding-top: .5%;
 }
 /** RESPONSIVE STYLE FOR NAV BAR */
 @media screen and (min-width: 1120px) {
-
+  
   #js-navbar-toggle{
     display: none;
+    padding-top: 0;
   }
 
   .main-nav {
