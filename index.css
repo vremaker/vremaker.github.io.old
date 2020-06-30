@@ -40,11 +40,15 @@ main {
 .navbar {
   /*font-family: "Big Shoulders Display", sanserif;*/
   padding:0;
+  top: 0;
   z-index: 1;
-  font-size: 18px;
+  font-size: 18pt;
   background-color: #c46e83;
   position: fixed;
   width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 }
 
 .main-nav {
@@ -64,19 +68,27 @@ main {
 }
 
 .logo {
-  font-size: 28px;
-  margin-top: 10px;
-  margin-left: 20px;
+
+  left: 20px;
+
 }
 
 .navbar-toggle {
+  right: 20px;
+  padding-top: 5px;
+}
+
+.navbar-toggle, .logo {
   position: absolute;
   top: 10px;
-  right: 20px;
   cursor: pointer;
   color: rgba(255, 255, 255, 0.8);
   font-size: 24px;
 }
+
+
+
+
 
 .active {
   display: block;
@@ -228,6 +240,8 @@ h2 {
   text-align: left;
   margin-left: 10%;
 }
+
+
 #resume {
   flex-flow: column;
   justify-content: center;
@@ -283,6 +297,12 @@ h2 {
     margin-left: 0;
     padding: 5%;
   }
+  
+#about-info p, #about-info h2  {
+  margin-left: 0;
+  font-size:14pt;
+
+  }
 }
 
 /* BEGIN Style for the scroll indicator */
@@ -294,14 +314,14 @@ h2 {
   margin-left: -12px;
   border-left: 3px solid #fff;
   border-bottom: 3px solid #fff;
-  -webkit-transform: rotateZ(-45deg);
-  transform: rotateZ(-45deg);
+ /* -webkit-transform: rotateZ(-45deg);
+ /* transform: rotateZ(-45deg);*/
   -webkit-animation: sdb06 1.5s infinite;
   animation: sdb06 2s infinite;
   box-sizing: border-box;
 }
 
-@-webkit-keyframes sdb06 {
+/* @-webkit-keyframes sdb06 {
   0% {
     -webkit-transform: rotateY(0) rotateZ(-45deg) translate(0, 0);
     opacity: 0;
@@ -331,7 +351,7 @@ h2 {
     transform: rotateY(720deg) rotateZ(-45deg) translate(-20px, 20px);
     opacity: 0;
   }
-}
+} */
 
 /* END STYLE FOR SCROLL INDICATOR ANIMATION */
 
@@ -495,8 +515,9 @@ h2 {
     height: 150px;
     margin-left:auto;
     margin-right:auto;
-  } .image-caption p{
-    font-size: 8pt;
+  } 
+  .image-caption p{
+    font-size: 10pt;
   }
 }
  
@@ -646,5 +667,8 @@ h3 {
   font-size: 25pt;
   text-align: center;
   font-family: "Big Shoulders Display", sans-serif;
+}
 
+.logo {
+  padding-bottom: 5px;
 }
