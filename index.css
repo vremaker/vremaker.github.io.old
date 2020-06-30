@@ -6,12 +6,6 @@
   padding: 0;
   margin: 0;
 }
-
-h2 {
-  font-size: 30pt;
-  text-align: center;
-  font-family: "Big Shoulders Display", sans-serif;
-}
 html {
   width: 100%;
 }
@@ -224,7 +218,13 @@ h2 {
 }
 
 #about-info p {
-  margin-left: 50px;
+  margin-left: 10%;
+  font-size:14pt;
+}
+
+#about-info h2 {
+  text-align: left;
+  margin-left: 10%;
 }
 #resume {
   flex-flow: column;
@@ -237,6 +237,10 @@ h2 {
   width: 60%;
    border: solid black 1px;
   margin-top: 20px;
+}
+
+h2 {
+  font-family: "Big Shoulder Display", sans-serif;
 }
 
 /*applied to multiple sections */
@@ -273,8 +277,9 @@ h2 {
     height:auto;
     margin-bottom:2%;
   }
-  #about-info p {
+  #about-info  {
     margin-left: 0;
+    padding: 5%;
   }
 }
 
@@ -626,4 +631,18 @@ input[id=last] {
 #landing h2 {
   font-size: 15pt; 
   font-family: "Open Sans Condensed", sans-serif;
+}
+
+
+h2 {
+  font-size: 30pt;
+  text-align: center;
+  font-family: "Big Shoulders Display", sans-serif;
+}
+
+h3 {
+  font-size: 25pt;
+  text-align: center;
+  font-family: "Big Shoulders Display", sans-serif;
+
 }
