@@ -39,12 +39,14 @@ main {
 /* BEGIN NAV BAR STYLE */
 .navbar {
   /*font-family: "Big Shoulders Display", sanserif;*/
-  padding:0;
+  padding-top:1%;
+  padding-bottom: 1%;
   z-index: 1;
-  font-size: 18px;
+  font-size: 18pt;
   background-color: #c46e83;
   position: fixed;
   width: 100%;
+  
 }
 
 .main-nav {
@@ -58,12 +60,16 @@ main {
   color: rgba(255, 255, 255, 0.7);
 }
 
+.main-nav {
+  background-color: #c46e83;
+}
+
 .main-nav li {
   text-align: center;
   margin: 15px auto;
 }
 
-.logo {
+.logo  {
   font-size: 28px;
   margin-top: 10px;
   margin-left: 20px;
@@ -121,7 +127,6 @@ main {
   background-size: cover;
   margin: 0;
   height: 100%;
-  
   text-align: center;
   background:#c46e83;
   border-top:40px solid #c46e83; 
