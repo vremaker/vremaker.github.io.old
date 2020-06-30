@@ -7,9 +7,13 @@
   "https://students.washington.edu/vremaker/felineGroovy/",
   "https://play.google.com/store/apps/details?id=edu.washington.info448.pace","https://students.washington.edu/vremaker/NamePunsSp19/", "https://students.washington.edu/vremaker/dubhacks2018/landing.html"];
   function init() {
+    let chev = qs(".box");
     let menu = qs(".navbar-toggle");
     let min = id("js-menu");
     let main = qs(".main-nav");
+    chev.addEventListener("click", function(){
+      window.open("index.html#portfolio","_self");
+    } )
     menu.addEventListener("click", function(){
         main.classList.toggle('active');
     });
