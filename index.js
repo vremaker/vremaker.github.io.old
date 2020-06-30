@@ -3,7 +3,7 @@
 
   window.addEventListener("load", init);
   //Links to all of the projects in order that they appear in the css 
-  let links = ["cg.html","nightowl.html", "k-12wb.html",
+  let links = ["reWA.html","cg.html","nightowl.html", "k-12wb.html",
   "https://students.washington.edu/vremaker/felineGroovy/",
   "https://play.google.com/store/apps/details?id=edu.washington.info448.pace","https://students.washington.edu/vremaker/NamePunsSp19/", "https://students.washington.edu/vremaker/dubhacks2018/landing.html"];
   function init() {
