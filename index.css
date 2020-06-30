@@ -238,10 +238,7 @@ h2 {
   font-size:14pt;
 }
 
-#about-info h2 {
-  text-align: left;
-  margin-left: 10%;
-}
+
 
 
 #resume {
@@ -620,6 +617,10 @@ input[id=last] {
     margin-left: auto;
     margin-right: auto;
   }
+
+  #about img {
+    width: 50%;
+  }
 }
 
 #sm {
@@ -676,6 +677,12 @@ h3 {
   font-size: 25pt;
   text-align: center;
   font-family: "Big Shoulders Display", sans-serif;
+}
+
+#about-info h2 {
+  text-align: center;
+  margin-left: 0%;
+  font-size: 30pt;
 }
 
 .logo {
