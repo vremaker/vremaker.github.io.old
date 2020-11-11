@@ -62,7 +62,7 @@
       "short-name": "cse-pun54",
       "title": "The CSE 154 Name Pun Generator",
       "description": "Created as a creative project for CSE154, a web development class at The University of Washington. Using the participants tab on the Canvas web page for the course, I created a name pun for every student in the class, and created an API around these name puns. I then created a searchable interface to look up name puns for people in the class. You can also select a random name pun for anyone in the class.",
-      "links": ["View the Site","https://students.washington.edu/vremaker/NamePunsSp19/"]
+      "links": ["View the Site","https://vremaker.medium.com/meet-the-feline-fit-scrunchie-a7a8bd972d88"]
     }
   };
 
@@ -91,6 +91,13 @@
         id("text-view").classList.add("hidden");
       });
     }
+    id("logo").addEventListener("click",()=>{
+         id("landing").classList.remove("hidden");
+        id("about").classList.remove("hidden");
+        id("portfolio").classList.remove("hidden");
+        id("contact").classList.remove("hidden");
+        id("text-view").classList.add("hidden");
+    });
     let tiles = qsa(".image-container");
     for(let i = 0; i < tiles.length; i ++) {
       tiles[i].addEventListener("click", function() {
