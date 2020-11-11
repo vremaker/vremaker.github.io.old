@@ -1,179 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-  <link href="index.css" rel="stylesheet"/>
+  <link href="index.css" rel="stylesheet" />
   <script src="index.js"></script>
   <script src="mail.js"></script>
   <script src="https://kit.fontawesome.com/ffdd2dcd0f.js"></script>
-  <link rel="shortcut icon" type="image/x-icon" href="val_square_small.ico"/>
+  <link rel="shortcut icon" type="image/x-icon" href="val_square_small.ico" />
   <title>Valerie Remaker</title>
 </head>
+
 <body>
   <header>
     <!-- LINKS for home, about, resume, portfolio, contact -->
   </header>
   <main>
-
     <nav class="navbar">
       <i class="navbar-toggle fas fa-bars" id="js-navbar-toggle"></i>
-      <a href="#landing" class="logo">VR</a>
+      <a href="index.html#landing" class="logo">VR</a>
       <ul class="main-nav" id="js-menu">
-        <li>
-          <a href="#portfolio" class="nav-links">My Work</a>
-        </li>
-        <li>
-          <a href="#about" class="nav-links">About Me</a>
-        </li>
-        <li>
-          <a href="#resume" class="nav-links">Resume</a>
-        </li>
-       
-      
-        <li>
-          <a href="#contact" class="nav-links">Let's Connect!</a>
-        </li>
+        <li><a href="index.html#about" class="nav-links">About Me</a></li>
+        <li><a href="index.html#portfolio" class="nav-links">My Work</a></li>
+        <li><a href="index.html#contact" class="nav-links">Let's Connect!</a></li>
       </ul>
     </nav>
+      <!--LANDING -->
+      <section id="landing">
+        <div id="front-text">
+          <img class="valLogo" src="vaLogo.png" alt="Valerie Remaker's Logo" />
+          <h1> Hi There! I'm Valerie Remaker </h1>
+          <h2> Designer - Educator - Programmer </h2>
+          <div class="box"><a href="#about"><span></span></a></div>
+        </div>
+        <img id="val" src="sketch.png" alt="this is Valerie Remaker's face" />
+      </section>
 
-  <!--LANDING -->
-    <section id="landing">
-      <div id="front-text">
-        <img class="valLogo" src="vaLogo.png" alt="a whale logo" />
-        <h1> Hi There! I'm Valerie Remaker </h1>
-        <h2> I'm a Human Centered Designer </h2>
-        <div class="box"><span></span></div>
-      </div>
-      <img id="val" src="sketch.png" alt="this is Valerie's face" />
+      <!--ABOUT-->
+      <section id="about" class="text-view">
+        <div class="text-view-info">
+          <img src="gamerCrop.jpg" alt="this is Valerie Remaker's face" />
+          <br>
+          <div id="text">
+            <h2> It's Nice to Meet You! </h2>
+            <p> Hi, my name is Valerie Remaker and I am a junior double majoring in
+              Human Centered Design & Engineering (HCDE) and Psychology at
+              the University of Washington. I really love this combination of fields of study, becuase
+              as designers and engineers, we design for human needs and desires,
+              rather than designing for optimized machines and or algorithms. A major in psychology focuses on
+              understanding human behavior which I can apply in the design process. I am very passionate about K-12
+              Engineering outreach to help get the future generations of engineers interested in Engineering. I am
+              currently an Engineering Ambassador for The College Of Engineering at The University of Washington!
+              <br />
+              I plan to use my degree to pursue user experience design and web development! I also have an interst in
+              designing and developing classroom technology.
+              <br id="big" />
+              <span class="links" style="margin-top:30px" >
+                <a href="resume.html" class="button" id="resume-btn">My Resume</a>
+              </span>
+              </p>
+
+          </div>
+        </div>
+      </section>
+
+      <!--PORTFOLIO-->
+      <section id="portfolio">
+        <h2> Some of My Favorite Projects</h2>
+        <div id="wrapper">
+          <!-- CROCHET BUDDY-->
+          <div id="crochet-buddy" class="image-container">
+            <img src="tiles/crochet-buddy.jpg" alt="Crochet Buddy" />
+            <div class="image-caption">
+              <p class="text"> Crochet Buddy is an Internet of Things (IoT)
+                device created to assist novice crochet hobbyists in their pursuit of beautiful yarn-craft.
+              </p>
+            </div>
+          </div>
+
+          <div id="feline-fit" class="image-container">
+            <img src="tiles/feline-fit.jpg" alt="Feline Fit Scrunchie" />
+            <div class="image-caption">
+              <p class="text"> The Feline Fit Scrunchie is a hip new re-fur-esh on the standard fitness tracker!
+
+              </p>
+            </div>
+          </div>
+
+          <div id="ECT" class="image-container">
+            <img src="tiles/ECT.jpg" alt="Ect logo" />
+            <div class="image-caption">
+              <p class="text"> Inspired by the song "One Short Day," from Wicked: The Musical & Seattle's
+               Emerald City nickname, this brand redesign seeks to add whimsy and fun to an otherwise boring
+                commute.
+              </p>
+            </div>
+          </div>
+
+          <div id="workbook" class="image-container">
+            <img src="tiles/workbook.jpg" alt="Human Centered Design Workbook" />
+            <div class="image-caption">
+              <p class="text"> This workbook is designed to deliver the Human Centered Design Charrette to students virtually, which allows for learning during the pandemic and beyond. 
+              </p>
+            </div>
+          </div>
+          <div id="rewa" class="image-container">
+            <img src="tiles/rewa.jpg" alt="Refugee Women's Alliance Brand Redesign" />
+            <div class="image-caption">
+              <p class="text"> Refugee Women's Alliance is a non-profit in Seattle with a focus on providing programs
+                refugee women and their families. I adapted the existing brand for a hip new .
+              </p>
+            </div>
+          </div>
+          
+          <!--<div class="image-container">
+            <img src="tiles/minecrafting.jpg" alt="minecrafting" />
+            <div class="image-caption">
+              <p class="text"> An exploration of react to create a minecrafting simulator
+              </p>
+            </div>
+          </div>-->
+
+          <div id="night-owl" class="image-container">
+            <img src="tiles/night-owl.jpg" alt="Night Owl" />
+            <div class="image-caption">
+              <p class="text">An app designed to keep UW Students safe while walking around at night. </p>
+            </div>
+          </div>
+
+          <div id="common-ground" class="image-container">
+            <img src="tiles/common-ground.jpg" alt="Common Ground: people over politics" />
+            <div class="image-caption">
+              <p class="text"> Common Ground focuses on uniting people rather than dividing them during a very this politically charged era of society. Finalist in the HCDE Democracy Design Jam.
+           </p>
+            </div>
+          </div>
+
+
+          <div id="feline-groovy" class="image-container">
+            <img src="tiles/feline-groovy.jpg" alt="an image of a black cat with the text felin e groovy" />
+            <div class="image-caption">
+              <p class="text"> An exploration of the Reddit API to create a website that servces up cat pictures and memes to cheer you up no matter what kind of mood you are in.
+              </p>
+            </div>
+          </div>  
+          <div id="pace" class="image-container">
+            <img src="tiles/pace.jpg" alt="pace: classroom engagement" />
+            <div class="image-caption">
+              <p class="text"> An application designed to increase classroom engagement which was created using Kotlin.
+              </p>
+            </div>
+          </div>
+          <div id="cse-pun54" class="image-container">
+            <img src="tiles/cse-pun54.jpg" alt="cse pun fifty four" />
+            <div class="image-caption">
+              <p class="text"> An exploration of PHP which led to the creation of an API which served up name puns for people in the CSE154 class at the UW during Spring 2019. 
+              </p>
+            </div>
+          </div>
+          <!--<div class="image-container">
+            <img src="tiles/feeling-feed.jpg" alt="feeling feed" />
+            <div class="image-caption">
+              <p class="text"> An image feed moderated by what mood you are in. Created for Dubhacks 2018
+              </p>
+            </div>
+          </div>
+        </div>-->
+    </div>
     </section>
-
-   
-
-    <!--PORTFOLIO-->
-    <section id="portfolio">
-      <h2> Take a Look at Some of My Favorite Projects</h2> 
-      <div id="wrapper">
-        <div class="image-container">
-          <img src="ECT-tile.png" alt="Ect logo" />
-          <div class="image-caption">
-            <p> A rebrand of The Seattle Public Transit System inspired by Wicked's "One Short Day."
-            </p>
-          </div>
-        </div>
-      <div class="image-container">
-        <img src="rewa.png" alt="ReWA" />
-        <div class="image-caption">
-          <p> A design brand book that revamped the exisiting brand for Refugee Women's 
-            Alliance
-          </p>
-        </div>
-      </div>
-      
-        <div class="image-container">
-          <img src="cg-tile.jpg" alt="Common Ground" />
-          <div class="image-caption">
-            <p> Finalist in the HCDE Democracy Design Jam. Focused on 
-              uniting people rather than dividing them. 
-            </p>
-          </div>
-        </div>
-        <div class="image-container">
-          <img src="owl.jpg" alt="Night Owl" />
-          <div class="image-caption">
-            <p>An app designed to keep UW Students safe while walking around at night</p>
-          </div>
-        </div>
-        <div class="image-container">
-          <img src="workbook.png" alt="HCDE User Centered Design Workbook"/>
-          <div class="image-caption">
-            <p> A workbook on User Centered Design for students  
-              stuck at home during covid-19 
-            </p>
-          </div>
-        </div>
-        <div class="image-container">
-          <img src="cat.jpg" alt="an image of a black cat with the text felin e groovy" />
-          <div class="image-caption">
-            <p> An exploration of the reddit API to create a cat
-              themed picture feed website
-            </p>
-          </div>
-        </div>
-        <div class="image-container">
-          <img src="pace.jpg" alt="pace" />
-          <div class="image-caption">
-            <p> An application designed to increase classroom engagement; created using Kotlin.
-            </p>
-          </div>
-        </div>
-        <div class="image-container">
-          <img src="puns.jpg" alt="cse pun fifty four" />
-          <div class="image-caption">
-            <p> An exploration of php to create an API that returns original 
-              name puns for everyone in the CSE154 class at UW
-            </p>
-          </div>
-        </div>
-        <div class="image-container">
-          <img src="feeling.png" alt="feeling feed" />
-          <div class="image-caption">
-            <p> An image feed moderated by what mood you are in. Created for Dubhacks 2018
-            </p>
-          </div>
-        </div>
-      </div>
-      </div>
-      
-      </div>
-    </section>
-
-     <!--ABOUT-->
-     <section id="about">    
-      <div id="about-info">
-         <img src="gamerCrop.jpg" alt="this is Valerie's face" />
-         <br>
-         <div id="text">
-          <h2> It's Nice to Meet You! </h2>
-          <p> Hi, my name is Valerie Remaker and I am a junior double majoring in Human Centered Design & Engineering (HCDE) and Psychology at
-             the University of Washington. Does that actually count as engineering? Yes! An engineer is a 
-            person who designs and builds machines and structures. As a Human Centered Designer, I design and 
-            build products and experiences. As Designers and Engineers, we design for human needs and desires,
-            rather than designing for optimized machines and or algorithms. Our field has a strong
-            focus on empathy to get to the root of users' needs and to design innovative and easily 
-            understood solutions to complex human problems. In the past few quarters I have had the pleasure 
-            of working within our department to bring HCDE ideas to K-12 students who are interested in 
-            engineering, through the introduction of a fast paced design charrette workshop. Through 
-            my outreach work, I hope to fight the stereotype that engineers have to be lonely nerds who 
-            are good at math and to inspire students to use their creativity to solve real world problems.
-            <br />
-            I plan to use my degree to pursue user experience design and web development.
-          </p>
-        </div>
-      </div>
-   
-    </section>
-
-    <!--RESUME-->
-    <section id="resume">
-      <h2>My Resume</h2>
-      <img src="resume.jpg" alt="valerie's resume"/>
-      <a class="button" target="_blank" href="https://drive.google.com/file/d/1SdamkOjrAwPNdDPxSAEk9XbRxv8YUzee/view?usp=sharing"> Download my resume </a>
-    </section>
-    
-     <!--CONTACT-->
-     <section id="contact">
+    <!--CONTACT-->
+    <section id="contact">
       <h2> Let's Connect! </h2>
       <div id="flexy">
         <div id="sm">
           <h3> Don't be a stranger </h3>
-          <p>  Feel free to shoot me an email, text me,
-            or connect with me on social media! I'd love to grab a coffee and chat. 
+          <p> Feel free to shoot me an email, text me,
+            or connect with me on social media! I'd love to grab a coffee and chat.
             <br />
             I look forward to hearing from you.
           </p>
-          <!--<a target="_blank" href="https://www.instagram.com/valer.tree.art/"><i class="fab fa-instagram"></i></a>-->
+          <a target="_blank" href="https://www.instagram.com/valer_tree/"><i class="fab fa-instagram"></i></a>
           <a target="_blank" href="https://www.facebook.com/valerie.remaker"> <i class="fab fa-facebook-square"></i></a>
-          <a target="_blank" href="https://www.linkedin.com/in/valerie-remaker-10206447/"><i class="fab fa-linkedin"></i></a>
+          <a target="_blank" href="https://www.linkedin.com/in/valerie-remaker-10206447/"><i
+              class="fab fa-linkedin"></i></a>
           <a target="_blank" href="https://github.com/vremaker"><i class="fab fa-github-square"></i></a>
           <a href="tel:408-717-0338"><i class="fas fa-phone-square-alt"></i></a>
         </div>
@@ -182,17 +191,45 @@
           <!--EMAIL FORM -->
           <form>
             <div id="names">
-              <input id="first" type="text" class="form-control" placeholder="First name"required>
+              <input id="first" type="text" class="form-control" placeholder="First name" required>
               <input id="last" type="text" class="form-control" placeholder="Last name" required>
             </div>
             <input id="email" type="email" class="form-control" placeholder="Email" required>
             <input id="sub" type="text" class="form-control" placeholder="Subject" required>
-            <textarea id="msg" class="form-control" placeholder="Your Message "id="exampleFormControlTextarea5" rows="3" required></textarea>
-            <button class="button" id="mail">  Submit </button>
+            <textarea id="msg" class="form-control" placeholder="Your Message " id="exampleFormControlTextarea5"
+              rows="3" required></textarea>
+            <button class="button" id="mail"> Submit </button>
           </form>
         </div>
       </div>
     </section>
-</main>
+  </div>
+  
+    <section id="text-view" class="hidden">
+      <div class="text-view-info">
+          <img src="tiles/crobud.jpg" alt="Crochet Buddy " />
+          <br>
+          <div id="text">
+              <h2>Crochet Buddy </h2>
+              <p> <span id="cow">
+                  In the Spring of 2020, around the start of the Novel Coronavirus Pandemic that caused
+                  countries to shut down, I took up the art of crochet to fill the days in isolation. Due to my
+                  inability to count my stitches correctly in each of the rows I completed, the first blanket I
+                  made came out as more of a trapezoid than a rectangle. The other big issue that most novice
+                  crochet hobbyists is keeping a consistent tension in the amount that you pull on the yarn to
+                  create each stitch. Crochet Buddy is an Internet of Things (IoT) device created to assist novice
+                  crochet hobbyists in their pursuit of beautiful yarn-craft.
+              </span>
+
+                  <br id="big" />
+                  <span class="links" style="margin-top:30px" >
+                   
+                  </span>
+                  </p>
+          </div>
+      </div>
+  </section>
+  </main>
 </body>
+
 </html>

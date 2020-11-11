@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Big+Shoulders+Display|Open+Sans+Condensed:300&display=swap');
 
-/* BEGIN STYLE THAT APPLIES THE WHOLE PAGE */
+/* BEGIN STYLE THAT APPLIES THE WHOLE PAGE or multiple sections */
 * {
   box-sizing: border-box;
   padding: 0;
@@ -12,14 +12,70 @@ html {
   padding:0;
 }
 
-body,
-html,
-main {
+body, html, main {
   font-family: "Open Sans Condensed", sans-serif;
   height: 100%;
   margin: 0;
 }
 
+h2 {
+  font-family: "Big Shoulder Display", sans-serif;
+}
+
+#about h2, #portfolio h2, #text-view h2, .text-view h2 {
+  margin-bottom: 30px;
+} 
+
+#about h2, #text-view h2, .text-view h2{
+  margin-left: 10%;
+  text-align: center;
+  font-size: 30pt;
+  
+}
+
+
+#about, #contact, #portfolio {
+  border-top:60px solid white; 
+  background-color: white;
+  text-align: center;
+  align-items: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  min-height:100%;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#text-view, .text-view {
+  border-top:60px solid white; 
+  background-color: white;
+  text-align: center;
+  align-items: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  min-height:100%;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+@media screen and (max-width: 1120px) {
+  #about, #portfolio, #contact, #text-view, .text-view {
+    width: 90%;
+    margin-left:auto;
+    margin-right:auto;
+    align-items: center;
+  }
+
+  #about h2 {
+    margin-left: 0;
+    
+  }
+
+}
 
 /*button styling */
  .button {
@@ -31,14 +87,12 @@ main {
 	cursor:pointer;
 	padding:10px 20px;
 	text-decoration:none;
-  margin: 5px;
    background-color: #c46e83;
    text-align: center;
  }
 
 /* BEGIN NAV BAR STYLE */
 .navbar {
-  /*font-family: "Big Shoulders Display", sanserif;*/
   padding-bottom: 1%;
   z-index: 1;
   font-size: 18pt;
@@ -52,7 +106,9 @@ main {
   list-style-type: none;
   display: none;
 }
-
+#big {
+  height: 30px;
+}
 .nav-links,
 .logo {
   text-decoration: none;
@@ -91,9 +147,9 @@ main {
   display: block;
   padding-top: .5%;
 }
+
 /** RESPONSIVE STYLE FOR NAV BAR */
 @media screen and (min-width: 1120px) {
-  
   #js-navbar-toggle{
     display: none;
     padding-top: 0;
@@ -106,7 +162,6 @@ main {
     flex-flow: row nowrap;
   }
 
-
   .navbar {
     display: flex;
     flex-flow: row nowrap;
@@ -116,7 +171,6 @@ main {
     padding-bottom: 0px;
   }
 }
-/* END NAV BAR STYLE */
 
 /** BEGIN STYLE FOR THE LANDING PORTION OF THE PAGE */
 #landing {
@@ -131,7 +185,19 @@ main {
   text-align: center;
   background:#c46e83;
   border-top:40px solid #c46e83; 
+}
 
+#landing h1 {
+  font-size: 40pt;
+  font-family: "Big Shoulders Display", sans-serif;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#landing h2 {
+  text-align: center;
+  font-size: 15pt; 
+  font-family: "Open Sans Condensed", sans-serif;
 }
 
 #val {
@@ -147,154 +213,7 @@ main {
 .valLogo {
   width: 10%;
 }
-#about h2 {
-  margin-bottom: 30px;
-}
 
-#landing h1 {
-  font-size: 40pt;
-  font-family: "Big Shoulders Display", sans-serif;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-
-h2 {
-  font-family: "Open Sans Condensed", sans-serif;
-}
-
-#cont {
-  font-family: "Open Sans", sans-serif;
-}
-
-/*for desktop */
-@media screen and (max-width: 1120px) {
-  #landing {
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #front-text {
-    width: 100%;
-  }
-
-  #val {
-    display: none;
-  }
-}
-
-/* END  basic styling for landing page */
-
-/*
- border-top:60px solid #fff; 
-
-  border-top: 40px solid white; 
-*/
-/*border for all anchor links */ 
-#resume, #about, #portfolio #contact {
-  min-height: 100%;
-  border-top:60px solid white; 
-  display:flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-#about {
-  flex-flow: column;
-}
-
-
-#about img {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-#about-info {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  margin-left: auto;
-  margin-right:auto;
-}
-
-#about-info p {
-  margin-left: 10%;
-  font-size:14pt;
-}
-
-
-
-
-#resume {
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#resume img{
-  height: auto;
-  width: 60%;
-   border: solid black 1px;
-  margin-top: 20px;
-}
-
-h2 {
-  font-family: "Big Shoulder Display", sans-serif;
-}
-
-/*applied to multiple sections */
-
-
-
-/* BEGIN PORTFOLIO STYLE */
-
-
-
-/*END PORTFOLIO SECTION*/
-
-/*BEGIN ABOUTR */
-
-/*End about */
-
-/*being contact */
-/*end contact*/ 
-
-
-
-/*border bottom for the resume about port and contact pages  and landing */ 
-/*for mobile  */
-@media screen and (max-width: 1120px) {
-  #resume, #about, #portfolio, #contact {
-    width: 97%;
-    margin-left:auto;
-    margin-right:auto;
-    align-items: center;
-  }
-
-  #resume img {
-    width: 95%;
-    height:auto;
-    margin-bottom:2%;
-  }
-  #about-info  {
-    margin-left: 0;
-    padding: 5%;
-  }
-  
-#about-info p, #about-info h2  {
-  margin-left: 0;
-  font-size:14pt;
-  }
-
-}
-
-/* BEGIN Style for the scroll indicator */
-/* TODO MAKE THE SCROLL INDIATOR NOT VISIBE OVER NAV **/
 .box span {
   position: absolute;
   width: 24px;
@@ -314,36 +233,102 @@ h2 {
     -webkit-transform: rotateY(0) rotateZ(-45deg) translate(0, 0);
     opacity: 0;
   }
-
   50% {
     opacity: 1;
   }
-
   100% {
     -webkit-transform: rotateY(720deg) rotateZ(-45deg) translate(-20px, 20px);
     opacity: 0;
   }
 }
-
 @keyframes sdb06 {
   0% {
     transform: rotateY(0) rotateZ(-45deg) translate(0, 0);
     opacity: 0;
   }
-
   50% {
     opacity: 1;
   }
-
-  100% {
+   100% {
     transform: rotateY(720deg) rotateZ(-45deg) translate(-20px, 20px);
     opacity: 0;
   }
 }
 
-/* END STYLE FOR SCROLL INDICATOR ANIMATION */
+@media screen and (max-width: 1120px) {
+  #landing {
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #front-text {
+    width: 100%;
+  }
+
+  #val {
+    display: none;
+  }
+}
+/**^ LANDING **/
 
 
+#about img {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+#text-view img, .text-view img {
+  width: 50%;
+  height: 50%;
+ 
+}
+
+#about-info, #text-view, .text-view-info {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  text-align: left;
+  margin-left: auto;
+  margin-right:auto;
+}
+
+#about-info p, .text-view-info p {
+  margin-left: 10%;
+  font-size:14pt;
+}
+
+@media screen and (max-width: 1120px) {
+  #resume, #about, #portfolio, #contact {
+    width: 80%;
+    margin-left:auto;
+    margin-right:auto;
+    align-items: center;
+  }
+  #about img {
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+  }
+
+
+  #about-info, .text-view-info  {
+    margin-left: 0;
+    max-height: 100%;
+    padding: 5%;
+  }
+  #about-info p, #about-info h2, .text-view-info p, .text-view-info h2 {
+    margin-left: 0;
+    font-size:14pt;
+  }
+}
+
+
+/** PORTFOLIO SECTION **/
+/**hover animation **/
 #wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -351,175 +336,59 @@ h2 {
   margin-right:auto;
   width: 95%;
   justify-content: center;
-  overflow: hidden;
-}
-
+  /*overflow: hidden;
+*/} 
 
 .image-container {
-  float: left;
-  vertical-align: middle;
-  width: 500px;
-  height: 500px;
   position: relative;
-  margin: 10px;
-  cursor: pointer;
+  width: 300px;
+  margin-left:2.5px;
+  margin-right: 2.5px;
 }
 
-.image-container img {
+#image-container > img {
+  display: block;
   width: 100%;
-  height: 100%;
-  position: absolute;
+  height: auto;
 }
-
 
 .image-caption {
-  vertical-align: middle;
-  margin-top:auto;
-  margin-bottom:auto;
-  width: 100%;
-  height: 100%;
-  background: rgba(196, 110, 132, 0.9);
-  position: relative;
-  color:white;
-  opacity: 0;
-  transition: all 300ms ease-in-out;
-  -webkit-transition: all 300ms ease-in-out;
-  -moz-transition: all 300ms ease-in-out;
-  -o-transition: all 300ms ease-in-out;
-  -ms-transition: all 300ms ease-in-out;
-}
-
-
-.image-caption p {
   position: absolute;
-  top: 40%;
-  left: 50%;
-  width: 50%;
-  height: 30%;
-  margin: -15% 0 0 -25%;
-  text-align: center;
-  font-size: 25pt;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 98%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #c46e83;
 }
 
 .image-container:hover .image-caption {
   opacity: 1;
 }
 
-#portfolio {
-  background-color: white;
-  min-height: 100%;
- border-top: 60px solid white; 
-
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
+/**End hover animation **/
 
 #portfolio h2 {
-  font-size: 30pt;
   text-align: center;
-  margin-bottom: 50px;
-  font-family: "Big Shoulders Display", sans-serif;
+  margin-top: 10px;
 }
 
-/*EEEEEEEEPPP*/
-
-@media all and (min-width: 0px) and (max-width: 600px) {
-  #wrapper {
-    flex-flow: column wrap;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .image-container {
-    width: 450px;
-    height: 450px;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .image-caption p {
-    font-size: 20pt;
-  }
-}
-@media all and (min-width: 0px) and (max-width: 520px) {
-  .image-container {
-    width: 350px;
-    height: 350px;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .image-caption {
-    font-size: 12pt;
-  }
-}
-@media all and (min-width: 0px) and (max-width: 400px) {
-  .image-container {
-    width: 300px;
-    height: 300px;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .image-caption p{
-    font-size: 15pt;
-  }
-}
-@media all and (min-width: 0px) and (max-width: 350px) {
-  .image-container {
-    width: 250px;
-    height: 250px;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .image-caption p{
-    font-size: 12pt;
-  }
-}
-
-@media all and (min-width: 0px) and (max-width: 300px) {
-  .image-container {
-    width: 200px;
-    height: 200px;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .image-caption p{
-    font-size: 10pt;
-  }
-}
-
-@media all and (min-width: 0px) and (max-width: 260px) {
-  .image-container {
-    width: 200px;
-    height: 200px;
-    margin-left:auto;
-    margin-right:auto;
-  } .image-caption p{
-    font-size: 10pt;
-  }
-}
-
-@media all and (min-width: 0px) and (max-width: 200px) {
-  .image-container {
-    width: 150px;
-    height: 150px;
-    margin-left:auto;
-    margin-right:auto;
-  } 
-  .image-caption p{
-    font-size: 10pt;
-  }
-}
- 
-/*contact form */
 
 /* BEGIN STYLE CONTACT SECTION */
-
-#contact {
-  border-top:40px solid white; 
-  background-color: white;
-  text-align: center;
-  align-items: center;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  min-height:100%;
-}
 
 
 #flexy {
@@ -542,7 +411,7 @@ h2 {
   width: 80%;
 }
 
-#contact {
+#contact, #portfolio {
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -586,16 +455,13 @@ input[id=last] {
   flex-flow: row nowrap;
 }
 
-#mail, #landing h2 {
-  font-family: "Open Sans Condensed", sans-serif;
-  font-size: 15pt;
-}
+
 
 @media screen and (max-width: 1120px) {
   #flexy {
     flex-flow: column;
   }
-  #about-info {
+  #about-info, .text-view-info {
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -604,7 +470,12 @@ input[id=last] {
     margin-left: auto;
     margin-right: auto;
   }
-
+  #text-view img, .text-view img {
+    width: 60%;
+    height: 60%;
+    
+  }
+  
 }
 
 #sm {
@@ -646,15 +517,15 @@ input[id=last] {
    #style-tile {
     display: none;
   }
+
+  #text-view h2, .text-view h2 {
+    font-size: 25pt;
+  }
 }
 /* END STYLING FOR CONTACT  FORM */
 
-#landing h2 {
-  font-size: 15pt; 
-  font-family: "Open Sans Condensed", sans-serif;
-}
 
-
+/*** NIGHT OWL PAGE **/
 h2 {
   font-size: 30pt;
   text-align: center;
@@ -667,11 +538,7 @@ h3 {
   font-family: "Big Shoulders Display", sans-serif;
 }
 
-#about-info h2, #contact h2, #resume h2,  {
-  text-align: center;
-  margin-left: 0%;
-  font-size: 30pt;
-}
+
 
 .logo {
   padding-bottom: 5px;
@@ -686,274 +553,28 @@ img {
    margin-right:auto;
 }
 
-
-#home-screen {
-  width: 30%;
-  padding-right:50px;
-  margin: 0;
-  font-size: 12pt;
-}
-#style-tile {
-  width: 60%;
-  margin-right:50px;
-  font-size: 12pt;
-  border: solid 1px black;
+.hidden {
+  display: none !important;
 }
 
-#owlLogo {
-  width:10%;
-}
-
-#bleep {
-  width: 50px; display: block;
-}
-#home {
-  width: 80%;
-  display: flex;
-  flex-flow: row nowrap;
-  margin-left:auto;
-  margin-right: auto;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 10%;
-  padding-top: 20%;
-  border-top:60px solid white;
-}
-
-#home-rewa {
+.links {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-evenly;
-  align-items: center;
-  width: 80%;
-  height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#rewaLogo {
-  width: 30%;
-}
-
-#info {
-  text-align: left;
-  width: 50%;
-}
-#info-cg  {
-  text-align: left;
-  width: 50%;
-  margin-left: 5%;
-}
-
-#interview a, #observ a {
-  margin: 1%;
-}
-
-hr {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-#interview, #prob, #observ, #comp, #persona, #persona-cg, #map, #dr, #story, #ia, #pp,  #refine, #wf, #final, #reflect, #NOabout{
-  width: 70%;
-  margin-left:auto;
-  margin-right:auto;
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-
-/*#interview h2, #observ h2, #comp h2, #persona h2 { */
-h2 { 
-  text-align: left;
 
 }
 
-#pitch h2 {
-  text-align: center;
-  font-size: 20pt;
-  margin-bottom: 20pt;
+.links p {
+  font-size: 12pt;
+  margin:0;
 }
 
-#dr img {
-  width: 80%;
-  margin-left:auto;
-  margin-right:auto;
-  display: block;
-
+@media screen and (min-width: 1120px) {
+#text-view h2 {
+  margin-left: 0;
 }
-#persona img {
-  margin: 10px;
 }
-
-#refine li, #pp li, #interview li, #observ li, #reflect li, #reflect em  {
-  list-style-type: none;
-}
-
-.ca, #observ a,#observ a, #persona a, #dr a, #ia a, #pp a, #final a {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-#ia a, #dr a, #persona a, #pp a, #observ a {
-  width: 30%;
-}
-
-.ca img {
-  height: 40px;
-  width: 40px;
-}
-
-#comp a {
-  font-size: 10pt;
-  color: black;
-  width: 100px;
-  padding-bottom: 1px;
-  text-decoration: none;
-  text-align: center;
-}
-
-#observ img, #persona img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-
-#home iframe {
-  width: 500px;
-  height: 315px ;
-  
-}
-
-@media screen and (max-width: 1120px) {
-  #home, #home-rewa{
-    height: 100%;
-    flex-flow: column-reverse;
-    align-items: center;
-    justify-content: center;
-  }
-
-
-  #home-screen {
-      display: none;
-  }
-  #home iframe {
-    width: 90%;
-  }
-  #home-rewa {
-    display: flex;
-    flex-flow: column-reverse;
-    justify-content: center;
-  }
-
-  #interview h2 {
-       padding:0;
-  }
-
-  #info, #info-cg {
-      text-align: center;
-      width: 90%;
-      margin-left: 0;
-      margin-top: 5%;
-  }
-
-  
-  p {
-      font-size: 12pt;
-  }
-}
-
-.slides {
-  width: 960px;
-  height: 569px;
-}
-
-
-#bios {
-  display: flex;
-  flex-flow:row wrap;
-  justify-content: center;
-}
-
-.card {
-  width: 200px;
-
-}
-
-
-.slides {
-  width: 800px;
-  height: 569px;
-  margin-bottom: 20px;
-  margin-left:auto;
-  margin-right:auto;
-  display:block;
-}
-
-#NOabout h2 {
-  text-align:  center;
-}
-
-@media screen and (max-width: 1120px) {
-  .slides {
-   width: 90%;
-  }
-
-  #high {
-      height:  350px;
-      Width: 250px;
-  }
-
-}
-
-#high {
-  display: block;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-
-#persona img {
-  width: 80%;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-/** end project description style **/
-
-#landing h2 {
-  text-align: center;
-}
-#persona-cg img {
-  width: 45%;
-  
-}
-.pers {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-}
-#about h2 {
+#about-info p {
   margin-left: 10%;
-  font-size: 30pt;
+  margin-right: 5%;
 }
-@media screen and (max-width: 1120px) {
-  .pers {
-    flex-flow:column;
-  }
-  #persona-cg img {
-    width: 90%;
-  }
-
-  #about h2 {
-    text-align: center;
-    margin-left:0;
-    
-  }
-}
-
