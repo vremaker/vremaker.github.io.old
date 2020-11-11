@@ -23,7 +23,7 @@
       "short-name": "ECT",
       "title": "Emerald City Transit",
       "description": "As a project, in an advanced design class offered through the HCDE Department at The University of Washington, I redesigned Seattle Public Transit. This redesign started with user research, to understand the audience of Seattle Public Transit in order to design for the actual audience. Next, came the creation of six tasks that a user on Seattle Public Transit would complete. Three of these tasks would be designed for a mobile platform, and three of these tasks would be made for a kiosk interaction which would be located at a transit stop. Next, there were diagrams of user flows, to understand how the user would interact with the system while completing their tasks. Then, we created low fidelity wireframes to understand and test the layout of these interactions. Then, we created mood boards and picked a typographic hierarchy and a color scheme. Finally, we created high fidelity wireframes which showcased the fully designed interactions.",
-      "links": ["Process Blog","https://vremaker.medium.com/meet-the-feline-fit-scrunchie-a7a8bd972d88"]
+      "links": ["Process Blog","https://vremaker.medium.com/seattle-public-transit-brand-redesign-5ce950b8513"]
     },
     "workbook": {
       "short-name": "Workbook",
@@ -38,31 +38,31 @@
       "short-name": "rewa",
       "title": "Refugee Women's Alliance Brand Redesign",
       "description": "Refugee Women's Alliance is a non-profit in Seattle with a focus on providing programs refugee women and their families. Over the course of 6 weeks, I adapted the existing color scheme for the brand, as well as the logo, iconography, and typography.",
-      "links": ["Process Blog","https://vremaker.medium.com/meet-the-feline-fit-scrunchie-a7a8bd972d88"]
+      "links": ["Process Blog","https://medium.com/p/43658536ecd9"]
     },
     "night-owl": {
       "short-name": "night-owl",
       "title": "Night Owl ",
       "description": "This project spanned 11 weeks in our HCDE 318 (Introduction to User Centered Design) course, in Autumn 2019. As a team of 4, we applied the user centered design process to the problem area of the danger of walking alone at night for students. The process culminated in a mobile application called Night Owl that gives students confidence and control when walking alone at night.",
-       "links": ["Process Blog", "https://vremaker.medium.com/meet-the-feline-fit-scrunchie-a7a8bd972d88"]
+       "links": ["Process Blog", "https://vremaker.medium.com/meet-night-owl-2cddf92d1b61"]
     },
     "common-ground": {
       "short-name": "common-ground",
       "title": "Common Ground: People Over Politics",
       "description": "For the HCDE democracy design jam of 2020, a 24 hour virtual design sprint. We designed a mobile app called Common Ground. Common Ground is designed to combat the social divisions that were weaponized in the 2016 election It humanizes the “opposing side” by focusing on what people have in common, rather than political strategy. Politics have become increasingly polarized in recent years. In many ways, COVID-19 has deepened this political divide: Our team wondered: In a country divided by politics and physical isolation, how can people connect and find common ground with each other?", 
-      "links": ["Process Blog", "https://vremaker.medium.com/meet-the-feline-fit-scrunchie-a7a8bd972d88"]
+      "links": ["Process Blog", "https://vremaker.medium.com/common-ground-fa5eebd326a"]
     },
     "feline-groovy": {
       "short-name": "feline-groovy",
       "title": "The Feline Fit Scrunchie",
       "description": "The Feline Fit Scrunchie is a hip new re-fur-esh on the standard fitness tracker offered through companies like Fitbit. But, instead of residing only the wrist, the Feline Fit Scrunchie gives you the option of wearing it in your hair as well as around your wrist. This is a purr-fect addition to your wardrobe that will help you reach your fitness goals in style!",
-      "links": ["View the Site", "https://vremaker.medium.com/meet-the-feline-fit-scrunchie-a7a8bd972d88"]
+      "links": ["View the Site", "https://students.washington.edu/vremaker/felineGroovy/"]
     },
     "cse-pun45": {
       "short-name": "cse-pun54",
       "title": "The CSE 154 Name Pun Generator",
       "description": "Created as a creative project for CSE154, a web development class at The University of Washington. Using the participants tab on the Canvas web page for the course, I created a name pun for every student in the class, and created an API around these name puns. I then created a searchable interface to look up name puns for people in the class. You can also select a random name pun for anyone in the class.",
-      "links": ["View the Site","https://vremaker.medium.com/meet-the-feline-fit-scrunchie-a7a8bd972d88"]
+      "links": ["View the Site","https://students.washington.edu/vremaker/NamePunsSp19/"]
     }
   };
 
