@@ -36,7 +36,7 @@
     },
     "rewa": {
       "short-name": "rewa",
-      "title": "Refugee Women's Alliance Brand Redesign",
+      "title": "Refugee Women's Alliance Redesign",
       "description": "Refugee Women's Alliance is a non-profit in Seattle with a focus on providing programs refugee women and their families. Over the course of 6 weeks, I adapted the existing color scheme for the brand, as well as the logo, iconography, and typography.",
       "links": ["Process Blog","https://medium.com/p/43658536ecd9"]
     },
@@ -54,11 +54,11 @@
     },
     "feline-groovy": {
       "short-name": "feline-groovy",
-      "title": "The Feline Fit Scrunchie",
-      "description": "The Feline Fit Scrunchie is a hip new re-fur-esh on the standard fitness tracker offered through companies like Fitbit. But, instead of residing only the wrist, the Feline Fit Scrunchie gives you the option of wearing it in your hair as well as around your wrist. This is a purr-fect addition to your wardrobe that will help you reach your fitness goals in style!",
+      "title": "Feline Groovy",
+      "description": "An exploration of the Reddit API to create a website that serves users memes and cat pictures from reddit. This webiste uses HTML, CSS, and Javascript.",
       "links": ["View the Site", "https://students.washington.edu/vremaker/felineGroovy/"]
     },
-    "cse-pun45": {
+    "cse-pun54": {
       "short-name": "cse-pun54",
       "title": "The CSE 154 Name Pun Generator",
       "description": "Created as a creative project for CSE154, a web development class at The University of Washington. Using the participants tab on the Canvas web page for the course, I created a name pun for every student in the class, and created an API around these name puns. I then created a searchable interface to look up name puns for people in the class. You can also select a random name pun for anyone in the class.",
@@ -96,12 +96,11 @@
         id("about").classList.remove("hidden");
         id("portfolio").classList.remove("hidden");
         id("contact").classList.remove("hidden");
-        id("text-view").classList.add("hidden");
+        id("text -view").classList.add("hidden");
     });
     let tiles = qsa(".image-container");
     for(let i = 0; i < tiles.length; i ++) {
       tiles[i].addEventListener("click", function() {
-        name = this.id;
         qs("#text-view .links").innerHTML = "";
         id("landing").classList.add("hidden");
         id("about").classList.add("hidden");
@@ -111,13 +110,13 @@
         qs("#text-view h2").innerText = PROEJECT_DETAILS[this.id]["title"];
         id("cow").innerText = PROEJECT_DETAILS[this.id]["description"];
         qs("#text-view img").src = "./tiles/" + PROEJECT_DETAILS[this.id]["short-name"] + ".jpg"; 
-        qs("#text-view img").alt = PROEJECT_DETAILS[name]["title"];  
-        for(let m = 0; m < PROEJECT_DETAILS[name]["links"].length; m+=2) {
+        qs("#text-view img").alt = PROEJECT_DETAILS[this.id]["title"];  
+        for(let m = 0; m < PROEJECT_DETAILS[this.id]["links"].length; m+=2) {
           let button = document.createElement("p");
           button.classList.add("button");
-          button.textContent = PROEJECT_DETAILS[name]["links"][m];
+          button.textContent = PROEJECT_DETAILS[this.id]["links"][m];
           button.addEventListener("click", ()=> {
-            window.open( PROEJECT_DETAILS[name]["links"][m + 1], '_blank');
+            window.open( PROEJECT_DETAILS[this.id]["links"][m + 1], '_blank');
           })
           qs("#text-view .links").appendChild(button);
         }
