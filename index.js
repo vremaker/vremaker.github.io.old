@@ -16,7 +16,7 @@
         "title": "The Feline Fit Scrunchie",
         "description": "The Feline Fit Scrunchie is a hip new re-fur-esh on the standard fitness tracker offered through companies like Fitbit. But, instead of residing only the wrist, the Feline Fit Scrunchie gives you the option of wearing it in your hair as well as around your wrist. This is a purr-fect addition to your wardrobe that will help you reach your fitness goals in style!",
         "links": [
-          "Process Blog","https://vremaker.medium.com/meet-the-feline-fit-scrunchie-a7a8bd972d88"
+          "Process Blog","https://vremaker.medium.com/meet-the-feline-fit-scrunchie-541bad3e2142"
         ]
     },
     "ECT": {
