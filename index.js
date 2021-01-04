@@ -62,7 +62,7 @@
       "short-name": "cse-pun54",
       "title": "The CSE 154 Name Pun Generator",
       "description": "Created as a creative project for CSE154, a web development class at The University of Washington. Using the participants tab on the Canvas web page for the course, I created a name pun for every student in the class, and created an API around these name puns. I then created a searchable interface to look up name puns for people in the class. You can also select a random name pun for anyone in the class.",
-      "links": ["View the Site","https://vremaker.medium.com/meet-the-feline-fit-scrunchie-a7a8bd972d88"]
+      "links": ["View the Site","https://students.washington.edu/vremaker/NamePunsSp19/"]
     }
   };
 
