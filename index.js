@@ -63,8 +63,15 @@
       "title": "The CSE 154 Name Pun Generator",
       "description": "Created as a creative project for CSE154, a web development class at The University of Washington. Using the participants tab on the Canvas web page for the course, I created a name pun for every student in the class, and created an API around these name puns. I then created a searchable interface to look up name puns for people in the class. You can also select a random name pun for anyone in the class.",
       "links": ["View the Site","https://students.washington.edu/vremaker/NamePunsSp19/"]
+    },
+    "zoom-u": {
+      "short-name": "zoom-u",
+      "title": "The Virtual College Experience",
+      "description":"A qualitative research study consisting of two field observations and two interviews which sought to answer the question: how do college students motivate and maintain productivity while learning from home?",
+      "links": ["View the Study", "https://vremaker.medium.com/the-virtual-college-experience-e23d982f09bf"]
     }
   };
+  //
 
   window.addEventListener("load", init);
  function init() {
