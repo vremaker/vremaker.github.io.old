@@ -1,12 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Big+Shoulders+Display|Open+Sans+Condensed:300&display=swap');
 
 html, body {
   padding: 0 0 0 0;
   margin: 0;
   font-family: 'helvetica', 'arial', 'sans';
+  width: 100%;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 h1,h2,h3,h4 {
-  font-family: 'helvetica', 'arial', 'sans';
+  font-family: 'Big Shoulders Display', 'arial', 'sans';
+  margin:0;
+  }
+
+  h2 {
+    margin-bottom:  10px;
   }
 
 
@@ -19,6 +28,10 @@ a {
   color: #000;
   height: auto;
   padding: 30px 30px 30px;
+  display:flex;
+  flex-flow:column;
+  align-items: center;
+  justify-content: centerf;
 }
 
 .header h1 {
@@ -55,10 +68,6 @@ a {
     padding: 300px 0px 30px 30px;
 }
 
-.widebody {
-    width: 800px;
-    padding: 0px 30px 30px 30px;
-}
 
 .widebody a {
 }
@@ -69,3 +78,47 @@ a {
   text-decoration: none;
 }
 
+.ass-head1 {
+  color:red;
+  text-align: center;
+  font-size: 20pt;
+}
+.ass-head2 {
+  color: blue;
+  text-align: center;
+
+}
+
+img {
+  width: 100%;
+  margin-left: auto;
+  margin-right:auto;
+}
+/*button styling */
+.button {
+  color: white;
+  font-size: 12pt;
+  border-radius:28px;
+	border:1px solid;
+	display:inline-block;
+	cursor:pointer;
+	padding:10px 20px;
+	text-decoration:none;
+   background-color: #c46e83;
+   text-align: center;
+ }
+figure {
+  margin: 0px;
+  text-align: center;
+}
+pre {
+  font-size: 8pt;
+}
+#schematic {
+  width: 80%;
+  margin-left:auto;
+  margin-right:auto;
+}
+br {
+  height: 10%;
+}

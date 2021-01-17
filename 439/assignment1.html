@@ -12,14 +12,107 @@
     <body> 
 
         <div class="header">
-            <h1>Example Student's Assignment 1!</h1>
-            <p>
-            <img src="red-panda.jpg" width=400></a>
-            </p>
-            <p>
-            Here is all the documentation for assignment 1!
-            </p>
-        </div>
+            <h1 class="ass-head1">A1:BLINK </h1>
+            <h2 class="ass-head2"> A Mini LED Dance Party!</h2>
+            
+            <figure id="schematic">
+                <img src="schematic.png"  alt="Schematic and Ohms Law Calculations" >
+                <figcaption>Fig.1 - The Schematic and Ohms Law Calculations.</figcaption>
+              </figure>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+
+            <figure>
+                <img src="LEDs.gif" alt=" 5 LEDs blinking" >
+                <figcaption>Fig.2 - 5 LEDs Blinking in the pattern as programmed by the arduino.</figcaption>
+              </figure>
+            <br />
+            <div id="code-snippet">
+                <h3> THE ARDUINO CODE</h3>
+            <pre>
+<font color="#434f54">&#47;&#47; stores the values for the pins that the LEDs are plugged into in the arduino </font>
+<font color="#434f54">&#47;&#47; RED = 12, WHITE = 10, BLUE = 8, YELLOW = 7, GREEN = 5</font>
+<font color="#00979c">int</font> <font color="#000000">pins</font><font color="#000000">[</font><font color="#000000">]</font> <font color="#434f54">=</font> <font color="#000000">{</font><font color="#000000">12</font><font color="#434f54">,</font><font color="#000000">10</font><font color="#434f54">,</font><font color="#000000">8</font><font color="#434f54">,</font><font color="#000000">7</font><font color="#434f54">,</font><font color="#000000">5</font><font color="#000000">}</font><font color="#000000">;</font>
+<font color="#434f54">&#47;&#47; variable that stores the number of pins being used on the breadboard </font>
+<font color="#00979c">int</font> <font color="#000000">pinsUsed</font> <font color="#434f54">=</font> <font color="#000000">5</font><font color="#000000">;</font>
+<font color="#434f54">&#47;&#47; the setup function runs once when you press reset or power the board</font>
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+&nbsp;<font color="#434f54">&#47;&#47; initialize digital pin 12 for the RED LED</font>
+&nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">12</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+&nbsp;<font color="#434f54">&#47;&#47; initialize digital pin 10 for the WHITE LED</font>
+&nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">10</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+&nbsp;<font color="#434f54">&#47;&#47; initialize digital pin 8 for the RED LED</font>
+&nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">8</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+&nbsp;<font color="#434f54">&#47;&#47; initialize digital pin 7 for the YELLOW LED</font>
+&nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">7</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> 
+&nbsp;<font color="#434f54">&#47;&#47; initialize digital pin 5 for the GREEN LED</font>
+&nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">5</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#434f54">&#47;&#47;Goes through the LED and lights them all up in an animatred fashion from RED to GREEN</font>
+<font color="#00979c">void</font> <font color="#000000">upTheScale</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+&nbsp;<font color="#434f54">&#47;&#47;Loops through the LED from RED to GREEN</font>
+&nbsp;<font color="#5e6d03">for</font><font color="#000000">(</font><font color="#00979c">int</font> <font color="#000000">i</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> <font color="#000000">i</font> <font color="#434f54">&lt;</font> &nbsp;<font color="#00979c">sizeof</font><font color="#000000">(</font><font color="#000000">pins</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#000000">i</font><font color="#434f54">++</font><font color="#000000">)</font><font color="#000000">{</font>
+&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Turns on the LED that is selected in the loop</font>
+&nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">pins</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font> 
+&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Stops program for half a second to give an animated effect</font>
+&nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">500</font><font color="#000000">)</font><font color="#000000">;</font>
+&nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+<font color="#434f54">&#47;&#47;A function that turns all LEDs to on in an animated fashion from the GREEN to RED</font>
+<font color="#00979c">void</font> <font color="#000000">downTheScale</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+&nbsp;<font color="#434f54">&#47;&#47;Loops through the LEDS from GREEN to RED</font>
+&nbsp;<font color="#5e6d03">for</font><font color="#000000">(</font><font color="#00979c">int</font> <font color="#000000">i</font> <font color="#434f54">=</font> <font color="#000000">pinsUsed</font> <font color="#434f54">-</font> <font color="#000000">1</font><font color="#000000">;</font> <font color="#000000">i</font> <font color="#434f54">&gt;=</font> <font color="#000000">0</font><font color="#000000">;</font> <font color="#000000">i</font><font color="#434f54">--</font><font color="#000000">)</font><font color="#000000">{</font>
+&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Turns off the LED that is selected in the loop</font>
+&nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">pins</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Stops program for half a second to give an animated effect</font>
+&nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">500</font><font color="#000000">)</font><font color="#000000">;</font>
+&nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+<font color="#434f54">&#47;&#47;A function that turns all LEDs on</font>
+<font color="#00979c">void</font> <font color="#000000">allOn</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">{</font>
+&nbsp;<font color="#434f54">&#47;&#47;Loops through every LED on the board</font>
+&nbsp;<font color="#5e6d03">for</font><font color="#000000">(</font><font color="#00979c">int</font> <font color="#000000">i</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> <font color="#000000">i</font> <font color="#434f54">&lt;</font> <font color="#00979c">sizeof</font><font color="#000000">(</font><font color="#000000">pins</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#000000">i</font><font color="#434f54">++</font><font color="#000000">)</font><font color="#000000">{</font>
+&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Turns the selected LED on</font>
+&nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">pins</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#434f54">,</font><font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+&nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+<font color="#434f54">&#47;&#47;A function that turns all LEDs off</font>
+<font color="#00979c">void</font> <font color="#000000">allOff</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+&nbsp;<font color="#434f54">&#47;&#47;Loops through every LED on the board</font>
+&nbsp;<font color="#5e6d03">for</font><font color="#000000">(</font><font color="#00979c">int</font> <font color="#000000">i</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> <font color="#000000">i</font> <font color="#434f54">&lt;</font> &nbsp;<font color="#00979c">sizeof</font><font color="#000000">(</font><font color="#000000">pins</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#000000">i</font><font color="#434f54">++</font><font color="#000000">)</font><font color="#000000">{</font>
+&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Stops program for half a second to give an animated effect</font>
+&nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">pins</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#434f54">,</font><font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+&nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+<font color="#434f54">&#47;&#47; the loop function runs over and over again forever</font>
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+&nbsp;<font color="#434f54">&#47;&#47;calls the up the scale funciton, to make it appear as if they are turning on one by one</font>
+&nbsp;<font color="#000000">upTheScale</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+&nbsp;<font color="#434f54">&#47;&#47;calls the down the scale function, to make it appear as if they are turning off one by one</font>
+&nbsp;<font color="#000000">downTheScale</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+&nbsp;<font color="#434f54">&#47;&#47;make the code inside repeat 5 times</font>
+&nbsp;<font color="#5e6d03">for</font><font color="#000000">(</font><font color="#00979c">int</font> <font color="#000000">i</font><font color="#434f54">=</font><font color="#000000">0</font><font color="#000000">;</font><font color="#000000">i</font> <font color="#434f54">&lt;</font> <font color="#000000">5</font><font color="#000000">;</font> <font color="#000000">i</font><font color="#434f54">++</font><font color="#000000">)</font><font color="#000000">{</font>
+&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Turns ass the lights on</font>
+&nbsp;&nbsp;&nbsp;<font color="#000000">allOn</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Stops program for half a second, for an animated effect</font>
+&nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">500</font><font color="#000000">)</font><font color="#000000">;</font>
+&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Turns all the lights off</font>
+&nbsp;&nbsp;&nbsp;<font color="#000000">allOff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Stops program for half a second for an animated effect </font>
+&nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">500</font><font color="#000000">)</font><font color="#000000">;</font>
+&nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+                </pre>
+                </div>
+                <a class="button" href="A1-Blink.ino" target="_blank">Open The .ino File Here </a>
+                <a class="button" href="index.html">Go Home </a>
+
         
     </body>
 </html>
