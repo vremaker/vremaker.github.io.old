@@ -32,7 +32,7 @@
       "links": ["Process Blog","https://vremaker.medium.com/seattle-public-transit-brand-redesign-5ce950b8513"]
     },
     "workbook": {
-      "short-name": "Workbook",
+      "short-name": "workbook",
       "title": "Human Centered Design Charrette Workbook",
       "description": "As a hands-on charrette, our project encourages students to engage with the prompt physically, using materials that they can likely find at home. This might be helpful for kids who are tired of working virtually, and enjoy concrete activities. The charrette asks students to ‘design a mobile application for a group of people with similar interests.’ Not only is this prompt universal enough that we run the same challenge in K-12 classrooms that we do with our university students, but it’s broad enough for you to tailor to your current lesson plan.",
       "links": [
