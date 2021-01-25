@@ -12,12 +12,126 @@
     <body> 
 
         <div class="header">
-            <h1>Example Student's Assignment 2!</h1>
+            <h1>RGB COLOR PICKER </h1>
             <p>
-            <img src="red-panda.jpg" width=400></a>
+              <figure id="schematic">
+                <img src="a2schematic.png"  alt="Schematic and Ohms Law Calculations" >
+                <figcaption>Fig.1 - The Schematic and Ohms Law Calculations.</figcaption>
+              </figure>  
+              <figure>
+                <img src="circuitButton.jpg" alt="the circuit layout, lots of wires and 3 buttons">
+                <figcaption>Fig.2 - The circuit wires and arduino </figcaption>
+              </figure> 
+              <figure>
+                <img src="fade-gif.gif">
+                <figcaption>Fig.3 - The buttons being pushed to mix the rgb color, while the indicators for which color the button is fades </figcaption>
+              </figure>
+           
             </p>
             <p>
-            Here is all the documentation for assignment 2!
+                <pre>
+
+                    <font color="#434f54">&#47;&#47; constants won&#39;t change. They&#39;re used here to set pin numbers:</font>
+                    <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">buttonPins</font><font color="#000000">[</font><font color="#000000">]</font> <font color="#434f54">=</font> <font color="#000000">{</font><font color="#000000">1</font><font color="#434f54">,</font> <font color="#000000">2</font><font color="#434f54">,</font> <font color="#000000">4</font><font color="#000000">}</font><font color="#000000">;</font> &nbsp;&nbsp;<font color="#434f54">&#47;&#47; the number of the pushbutton pin {red, green, blue}</font>
+                    <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">rgbPins</font><font color="#000000">[</font><font color="#000000">]</font> <font color="#434f54">=</font> <font color="#000000">{</font><font color="#000000">9</font><font color="#434f54">,</font> <font color="#000000">10</font><font color="#434f54">,</font> <font color="#000000">11</font><font color="#000000">}</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; the number of the LED pin {r,g,b}</font>
+                    <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">ledPins</font><font color="#000000">[</font><font color="#000000">]</font> <font color="#434f54">=</font> <font color="#000000">{</font><font color="#000000">3</font><font color="#434f54">,</font> <font color="#000000">5</font><font color="#434f54">,</font> <font color="#000000">6</font><font color="#000000">}</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; the number of the led pins {red, green, blue}</font>
+                    
+                    <font color="#434f54">&#47;&#47; Variables will change:</font>
+                    <font color="#00979c">int</font> <font color="#000000">rgbState</font><font color="#000000">[</font><font color="#000000">]</font> <font color="#434f54">=</font> <font color="#000000">{</font><font color="#000000">0</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">}</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; the current state of the output pins in rgb scale 0-255 {r,g,b}</font>
+                    <font color="#00979c">int</font> <font color="#000000">buttonState</font><font color="#000000">[</font><font color="#000000">]</font> <font color="#434f54">=</font> <font color="#000000">{</font><font color="#00979c">LOW</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">}</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; the current reading from the input pin {red, green, blue}</font>
+                    <font color="#00979c">int</font> <font color="#000000">lastButtonState</font><font color="#000000">[</font><font color="#000000">]</font> <font color="#434f54">=</font> <font color="#000000">{</font><font color="#00979c">LOW</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">}</font><font color="#000000">;</font> &nbsp;&nbsp;<font color="#434f54">&#47;&#47; the previous reading from the input pin {red, green, blue}</font>
+                    <font color="#00979c">int</font> <font color="#000000">brightness</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; the initial brightness of the led</font>
+                    <font color="#00979c">int</font> <font color="#000000">fadeAmount</font> <font color="#434f54">=</font> <font color="#000000">5</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;the amount to decrease as the led fades</font>
+                    
+                    <font color="#434f54">&#47;&#47; the following variables are unsigned longs because the time, measured in</font>
+                    <font color="#434f54">&#47;&#47; milliseconds, will quickly become a bigger number than can be stored in an int.</font>
+                    <font color="#00979c">unsigned</font> <font color="#00979c">long</font> <font color="#000000">lastDebounceTime</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; the last time the output pin was toggled</font>
+                    <font color="#00979c">unsigned</font> <font color="#00979c">long</font> <font color="#000000">debounceDelay</font> <font color="#434f54">=</font> <font color="#000000">50</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; the debounce time; increase if the output flickers</font>
+                    
+                    <font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+                     &nbsp;<font color="#434f54">&#47;&#47;loop that repeats 3 times: once for red, green, blue respectively</font>
+                     &nbsp;<font color="#5e6d03">for</font> <font color="#000000">(</font><font color="#00979c">int</font> <font color="#000000">i</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> <font color="#000000">i</font> <font color="#434f54">&lt;</font> <font color="#000000">3</font><font color="#000000">;</font> <font color="#000000">i</font><font color="#434f54">++</font><font color="#000000">)</font> <font color="#000000">{</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;sets up the buttons as input</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">buttonPins</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+                    
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;sets up the rgb legs as output</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">rgbPins</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+                    
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;sets up the red, green, blue leds as output</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">ledPins</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+                    
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; turn on all the single color leds, they should be situated in your</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; circuit to be indicators for the coordinating buttons on your breadboard</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">ledPins</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+                    
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; sets the color of the rgb legs to their initial state: 0, or off</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">rgbPins</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#434f54">,</font> <font color="#000000">rgbState</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">)</font><font color="#000000">;</font>
+                     &nbsp;<font color="#000000">}</font>
+                    <font color="#000000">}</font>
+                    
+                    <font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+                     &nbsp;<font color="#5e6d03">for</font> <font color="#000000">(</font><font color="#00979c">int</font> <font color="#000000">i</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> <font color="#000000">i</font> <font color="#434f54">&lt;</font> <font color="#000000">3</font><font color="#000000">;</font> <font color="#000000">i</font><font color="#434f54">++</font><font color="#000000">)</font> <font color="#000000">{</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; read the state of the switch into a local variable:</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#00979c">int</font> <font color="#000000">reading</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">buttonPins</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">)</font><font color="#000000">;</font>
+                    
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; check to see if you just pressed the button</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; (i.e. the input went from LOW to HIGH), and you&#39;ve waited long enough</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; since the last press to ignore any noise:</font>
+                    
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; If the switch changed, due to noise or pressing:</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">reading</font> <font color="#434f54">!=</font> <font color="#000000">lastButtonState</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">)</font> <font color="#000000">{</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; reset the debouncing timer</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">lastDebounceTime</font> <font color="#434f54">=</font> <font color="#d35400">millis</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+                    
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; whatever the reading is at, it&#39;s been there for longer than the debounce</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; delay, so take it as the actual current state:</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">(</font><font color="#d35400">millis</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#434f54">-</font> <font color="#000000">lastDebounceTime</font><font color="#000000">)</font> <font color="#434f54">&gt;</font> <font color="#000000">debounceDelay</font><font color="#000000">)</font> <font color="#000000">{</font>
+                    
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; if the button state has changed:</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">reading</font> <font color="#434f54">!=</font> <font color="#000000">buttonState</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">)</font> <font color="#000000">{</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;button state is saved as the reading of the new button activity</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">buttonState</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font> <font color="#434f54">=</font> <font color="#000000">reading</font><font color="#000000">;</font>
+                    
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; only toggle the LED if the new button state is HIGH</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonState</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font> <font color="#434f54">==</font> <font color="#00979c">HIGH</font><font color="#000000">)</font> <font color="#000000">{</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;checks the first state of color: 0, or off</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">rgbState</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font> <font color="#434f54">==</font> <font color="#000000">0</font><font color="#000000">)</font> <font color="#000000">{</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;if off, up the state to 125, at about half power.</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">rgbState</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font> <font color="#434f54">=</font> <font color="#000000">125</font><font color="#000000">;</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;checks if the state is 125, at half power</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">}</font> <font color="#5e6d03">else</font> &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">rgbState</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font> <font color="#434f54">==</font> <font color="#000000">125</font><font color="#000000">)</font> <font color="#000000">{</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;changes it to full power</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">rgbState</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font> <font color="#434f54">=</font> <font color="#000000">255</font><font color="#000000">;</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; the else branch catches the conditon for if it is at full power</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">}</font> <font color="#5e6d03">else</font> <font color="#000000">{</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;sets state back to 0</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">rgbState</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+                    
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; set the r,g, or b leg of the pin to the state from 0 to 255-</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">rgbPins</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#434f54">,</font> <font color="#000000">rgbState</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">)</font><font color="#000000">;</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; save the reading. Next time through the loop, it&#39;ll be the lastButtonState:</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#000000">lastButtonState</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font> <font color="#434f54">=</font> <font color="#000000">reading</font><font color="#000000">;</font>
+                    
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;writes the rgb pin to the same brightness</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">ledPins</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#434f54">,</font> <font color="#000000">brightness</font><font color="#000000">)</font><font color="#000000">;</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;subtracts the fade amount from the brightness</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#000000">brightness</font> <font color="#434f54">=</font> <font color="#000000">brightness</font> <font color="#434f54">+</font> <font color="#000000">fadeAmount</font><font color="#000000">;</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;if the brightness is full or none,</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font> <font color="#000000">brightness</font> <font color="#434f54">&lt;=</font> <font color="#000000">0</font> <font color="#434f54">||</font> <font color="#000000">brightness</font> <font color="#434f54">&gt;=</font> <font color="#000000">255</font><font color="#000000">)</font> <font color="#000000">{</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">turn</font> <font color="#000000">fully</font> <font color="#000000">on</font> <font color="#5e6d03">or</font> <font color="#000000">fully</font> <font color="#000000">off</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">fadeAmount</font> <font color="#434f54">=</font> <font color="#434f54">-</font><font color="#000000">fadeAmount</font><font color="#000000">;</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;wait 30 ms to show it fading &#47;animation</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">30</font><font color="#000000">)</font><font color="#000000">;</font>
+                     &nbsp;<font color="#000000">}</font>
+                    <font color="#000000">}</font>
+                    
+                    </pre>
             </p>
         </div>
         
