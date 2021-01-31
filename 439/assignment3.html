@@ -1,0 +1,88 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>A3: High/Low Power</title> 
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head> 
+    <body> 
+
+        <div class="header">
+            <h1>High and Low Power Indicator </h1>
+            <p>
+              <figure id="schematic">
+                <img src="a3schematic.png"  alt="Schematic and Ohms Law Calculations" >
+                <figcaption>Fig.1 - The Schematic and Ohms Law Calculations.</figcaption>
+              </figure>  
+              <figure>
+                <img src="circuitButton3.jpg" alt="the circuit layout, lots of wires and 3 buttons">
+                <figcaption>Fig.2 - The circuit wires and arduino </figcaption>
+              </figure> 
+              <figure>
+                <img src="pot.gif">
+                <figcaption>Fig.3 - The colors changing based on the potentiometer </figcaption>
+              </figure>
+              <figure>
+                <img src="term.gif">
+                <figcaption>Fig.3 - The serial reader, running </figcaption>
+              </figure>
+           
+            </p>
+            <p>
+                <pre>
+
+                    <font color="#434f54">&#47;&#47; These constants won&#39;t change. They&#39;re used to give names to the pins used:</font>
+                    <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">analogInPin</font> <font color="#434f54">=</font> <font color="#000000">A0</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; Analog input pin that the potentiometer is attached to</font>
+                    <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">analogOutPin</font> <font color="#434f54">=</font> <font color="#000000">5</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; pin for the white led</font>
+                    <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">red</font> <font color="#434f54">=</font> <font color="#000000">3</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;pin for the red led</font>
+                    <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">blue</font> <font color="#434f54">=</font> <font color="#000000">6</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; pin for the blue led</font>
+                    <font color="#00979c">int</font> <font color="#000000">sensorValue</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; value read from the pot</font>
+                    <font color="#00979c">int</font> <font color="#000000">outputValue</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; value output to the PWM (analog out)</font>
+                    
+                    <font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+                     &nbsp;<font color="#434f54">&#47;&#47; initialize serial communications at 9600 bps:</font>
+                     &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">9600</font><font color="#000000">)</font><font color="#000000">;</font>
+                    <font color="#000000">}</font>
+                    
+                    <font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+                     &nbsp;<font color="#434f54">&#47;&#47; read the analog in value:</font>
+                     &nbsp;<font color="#000000">sensorValue</font> <font color="#434f54">=</font> <font color="#d35400">analogRead</font><font color="#000000">(</font><font color="#000000">analogInPin</font><font color="#000000">)</font><font color="#000000">;</font>
+                     &nbsp;<font color="#434f54">&#47;&#47; map it to the range of the analog out:</font>
+                     &nbsp;<font color="#000000">outputValue</font> <font color="#434f54">=</font> <font color="#d35400">map</font><font color="#000000">(</font><font color="#000000">sensorValue</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#434f54">,</font> <font color="#000000">700</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#434f54">,</font> <font color="#000000">255</font><font color="#000000">)</font><font color="#000000">;</font>
+                     &nbsp;<font color="#434f54">&#47;&#47; change the analog out value:</font>
+                     &nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">analogOutPin</font><font color="#434f54">,</font> <font color="#000000">outputValue</font><font color="#000000">)</font><font color="#000000">;</font>
+                     &nbsp;<font color="#434f54">&#47;&#47;if check that looks for half power</font>
+                     &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">sensorValue</font> <font color="#434f54">&gt;</font> <font color="#000000">350</font><font color="#000000">)</font> <font color="#000000">{</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;if high power, red is on with white</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">red</font><font color="#434f54">,</font> <font color="#000000">outputValue</font><font color="#000000">)</font><font color="#000000">;</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;blue turns off</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">blue</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; if low power</font>
+                     &nbsp;<font color="#000000">}</font> <font color="#5e6d03">else</font> <font color="#000000">{</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;blue matches white output</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">blue</font><font color="#434f54">,</font> <font color="#000000">outputValue</font><font color="#000000">)</font><font color="#000000">;</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;red is off</font>
+                     &nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">red</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font>
+                     &nbsp;<font color="#000000">}</font>
+                     &nbsp;<font color="#434f54">&#47;&#47; print the results to the Serial Monitor:</font>
+                     &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;sensor = &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+                     &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">sensorValue</font><font color="#000000">)</font><font color="#000000">;</font>
+                     &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;\t output = &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+                     &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#000000">outputValue</font><font color="#000000">)</font><font color="#000000">;</font>
+                    
+                    
+                     &nbsp;<font color="#434f54">&#47;&#47; wait 2 milliseconds before the next loop for the analog-to-digital</font>
+                     &nbsp;<font color="#434f54">&#47;&#47; converter to settle after the last reading:</font>
+                     &nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font>
+                    
+                    </pre>
+            </p>
+        </div>
+        
+        <a class="button" href="index.html">Go Home</a> 
+    </body>
+</html>
