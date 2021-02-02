@@ -23,14 +23,20 @@ h2 {
 }
 
 #about h2, #portfolio h2, #text-view h2, .text-view h2 {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+  font-size: 2em;
 } 
 
-#about h2, #text-view h2, .text-view h2{
+#text-view h2, .text-view h2{
   
   text-align: center;
   font-size: 30pt;
   
+}
+#about h2 {
+  text-align: left;
+  margin-left: 10%;
+
 }
 
 
@@ -46,6 +52,9 @@ h2 {
   flex-direction: row;
   justify-content: center;
   margin-bottom: 20px;
+  width: 90%;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 #text-view, .text-view {
@@ -69,11 +78,6 @@ h2 {
     margin-left:auto;
     margin-right:auto;
     align-items: center;
-  }
-
-  #about h2 {
-    margin-left: 0;
-    
   }
 
 }
@@ -275,10 +279,11 @@ h2 {
 
 
 #about img {
-  width: 100%;
+  width: 350px;
   margin-left: auto;
   margin-right: auto;
   display: block;
+  border-radius: 50%;
 }
 #text-view img, .text-view img {
   width: 50%;
@@ -299,7 +304,8 @@ h2 {
 
 #about-info p, .text-view-info p {
   margin-left: 10%;
-  font-size:14pt;
+  font-size:1.1667em;
+  width: 100%;
 }
 
 @media screen and (max-width: 1120px) {
@@ -311,7 +317,8 @@ h2 {
   }
   #about img {
     width: 50%;
-    height: 50%;
+    margin-left:auto;
+    margin-right:auto;
     border-radius: 50%;
   }
 
@@ -319,11 +326,14 @@ h2 {
   #about-info, .text-view-info  {
     margin-left: 0;
     max-height: 100%;
-    padding: 5%;
+    
+    margin-left:  0;
   }
   #about-info p, #about-info h2, .text-view-info p, .text-view-info h2 {
+    margin-left:  0;
+  }
+  #about h2 {
     margin-left: 0;
-    font-size:14pt;
   }
 }
 
@@ -342,7 +352,7 @@ h2 {
 
 .image-container {
   position: relative;
-  width: 300px;
+  width: 250px;
   margin-left:2.5px;
   margin-right: 2.5px;
 }
@@ -521,7 +531,7 @@ input[id=last] {
   }
 
   #text-view h2, .text-view h2 {
-    font-size: 25pt;
+    font-size: 	2.06em;
   }
 }
 /* END STYLING FOR CONTACT  FORM */
@@ -529,13 +539,13 @@ input[id=last] {
 
 /*** NIGHT OWL PAGE **/
 h2 {
-  font-size: 30pt;
+  font-size: 2.5em;
   text-align: center;
   font-family: "Big Shoulders Display", sans-serif;
 }
 
 h3 {
-  font-size: 25pt;
+  font-size: 	2.06em;
   text-align: center;
   font-family: "Big Shoulders Display", sans-serif;
 }
@@ -579,4 +589,8 @@ img {
 #about-info p {
   margin-left: 10%;
   margin-right: 5%;
+}
+
+#wrapper {
+  width: 100%;
 }
