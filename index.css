@@ -571,7 +571,7 @@ img {
 
 .links {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column;
   justify-content: space-evenly;
 
 }
@@ -593,4 +593,10 @@ img {
 
 #wrapper {
   width: 100%;
+}
+
+.blog {
+  width: 80%;
+  margin-left:auto;
+  margin-right:auto;
 }

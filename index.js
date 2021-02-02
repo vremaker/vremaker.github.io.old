@@ -8,7 +8,8 @@
       "description": "In the Spring of 2020, around the start of the Novel Coronavirus Pandemic that caused countries to shut down, I took up the art of crochet to fill the days in isolation. Due to my inability to count my stitches correctly in each of the rows I completed, the first blanket I made came out as more of a trapezoid than a rectangle. The other big issue that most novice crochet hobbyists is keeping a consistent tension in the amount that you pull on the yarn to create each stitch. Crochet Buddy is an Internet of Things (IoT) device created to assist novice crochet hobbyists in their pursuit of beautiful yarn-craft.",
       "links": [ "Analog Prototpye", "https://vremaker.medium.com/meet-crochet-buddy-6ea6e1c062f", 
         "CAD Model", "https://vremaker.medium.com/exploring-crochet-buddy-in-onshape-9343e39630bd", 
-        "Bodystorming","https://vremaker.medium.com/you-can-count-on-crochet-buddy-1066d94b0aa2" 
+        "Bodystorming","https://vremaker.medium.com/you-can-count-on-crochet-buddy-1066d94b0aa2",
+        "Learning with Crochet Buddy", "https://vremaker.medium.com/learning-with-crochet-buddy-c4b2b2c9a3fa"
     ]
     },
     "feline-fit": {
@@ -63,12 +64,6 @@
       "title": "Feline Groovy",
       "description": "An exploration of the Reddit API to create a website that serves users memes and cat pictures from reddit. This webiste uses HTML, CSS, and Javascript.",
       "links": ["View the Site", "https://students.washington.edu/vremaker/felineGroovy/"]
-    },
-    "cse-pun54": {
-      "short-name": "cse-pun54",
-      "title": "The CSE 154 Name Pun Generator",
-      "description": "Created as a creative project for CSE154, a web development class at The University of Washington. Using the participants tab on the Canvas web page for the course, I created a name pun for every student in the class, and created an API around these name puns. I then created a searchable interface to look up name puns for people in the class. You can also select a random name pun for anyone in the class.",
-      "links": ["View the Site","https://students.washington.edu/vremaker/NamePunsSp19/"]
     }
   };
   //
