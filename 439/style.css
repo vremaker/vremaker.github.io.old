@@ -73,7 +73,7 @@ a {
 }
 
 .widebody a:hover {
-  background: #F06;
+  background: #AC0067;
   color: #FFF;
   text-decoration: none;
 }
@@ -104,7 +104,7 @@ img {
 	cursor:pointer;
 	padding:10px 20px;
 	text-decoration:none;
-   background-color: #c46e83;
+   background-color: #AC0067;
    text-align: center;
  }
 figure {

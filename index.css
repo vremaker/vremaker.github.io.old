@@ -59,6 +59,7 @@ h2 {
   display:flex;
   flex-direction: row;
   justify-content: center;
+  width: 90%;
 }
 
 
@@ -87,7 +88,7 @@ h2 {
 	cursor:pointer;
 	padding:10px 20px;
 	text-decoration:none;
-   background-color: #c46e83;
+   background-color: #AC0067;
    text-align: center;
  }
 
@@ -96,7 +97,7 @@ h2 {
   padding-bottom: 1%;
   z-index: 1;
   font-size: 18pt;
-  background-color: #c46e83;
+  background-color: #AC0067;
   position: fixed;
   width: 100%;
   
@@ -116,7 +117,7 @@ h2 {
 }
 
 .main-nav {
-  background-color: #c46e83;
+  background-color: #AC0067;
 }
 
 .main-nav li {
@@ -183,8 +184,8 @@ h2 {
   margin: 0;
   height: 100%;
   text-align: center;
-  background:#c46e83;
-  border-top:40px solid #c46e83; 
+  background:#AC0067;
+  border-top:40px solid #AC0067; 
 }
 
 #landing h1 {
@@ -362,7 +363,7 @@ h2 {
   width: 100%;
   opacity: 0;
   transition: .5s ease;
-  background-color: #c46e83;
+  background-color: #ac0067b7;
 }
 
 .image-container:hover .image-caption {
@@ -379,6 +380,7 @@ h2 {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
+  width: 90%;
 }
 /**End hover animation **/
 
