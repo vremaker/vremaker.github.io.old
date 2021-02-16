@@ -1,0 +1,118 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>A4: Capacitor</title> 
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head> 
+    <body> 
+
+        <div class="header">
+            <h1>Capacitor that controls a light and a servo  </h1>
+            <p>
+              <figure id="schematic">
+                <img src="a4schematic.jpg"  alt="Schematic and Ohms Law Calculations" >
+                <figcaption>Fig.1 - The Schematic and Ohms Law Calculations.</figcaption>
+              </figure>  
+              <figure>
+                <img src="circuita4.jpg" alt="the circuit layout">
+                <figcaption>Fig.2 - The circuit wires and arduino </figcaption>
+              </figure> 
+              <figure>
+                <img src="runninga4.gif">
+                <figcaption>Fig.3 - The capacitor that when touched turns on a light and moves the servo</figcaption>
+              </figure>
+              <figure>
+                <img src="a4serial.gif">
+                <figcaption>Fig.3 - The serial reader, running showing the capacitive touch value</figcaption>
+              </figure>
+           
+            </p>
+            <p>
+              <pre>
+                <font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><b><font color="#d35400">CapacitiveSensor</font></b><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font> <font color="#434f54">&#47;&#47;brings in the capacitive library</font>
+                <font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><b><font color="#d35400">Servo</font></b><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font> <font color="#434f54">&#47;&#47;brings in the servo library </font>
+                
+                <font color="#434f54">&#47;&#47;declarations</font>
+                <b><font color="#d35400">CapacitiveSensor</font></b> <font color="#000000">cs_4_2</font> <font color="#434f54">=</font> <b><font color="#d35400">CapacitiveSensor</font></b><font color="#000000">(</font><font color="#000000">4</font><font color="#434f54">,</font> <font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;<font color="#434f54">&#47;&#47;sets capacitor pins to 4 and 2 </font>
+                <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">LED_PIN</font> <font color="#434f54">=</font> <font color="#000000">11</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;sets the LED pin to 11</font>
+                <b><font color="#d35400">Servo</font></b> <font color="#000000">myServo</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; create a servo object</font>
+                
+                <font color="#434f54">&#47;&#47; variables</font>
+                <font color="#00979c">long</font> <font color="#000000">sensorValue</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;sets the sensor value to 0</font>
+                <font color="#00979c">long</font> <font color="#000000">sensorMin</font> <font color="#434f54">=</font> <font color="#000000">30000</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;sets the sensor minimum</font>
+                <font color="#00979c">long</font> <font color="#000000">sensorMax</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;srts sensor max </font>
+                
+                <font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+                 &nbsp;<font color="#000000">cs_4_2</font><font color="#434f54">.</font><font color="#d35400">set_CS_AutocaL_Millis</font><font color="#000000">(</font><font color="#000000">0xFFFFFFFF</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; turn off autocalibrate on channel 1 - just as an example</font>
+                 &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">9600</font><font color="#000000">)</font><font color="#000000">;</font>
+                 &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">LED_PIN</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+                
+                 &nbsp;<font color="#000000">myServo</font><font color="#434f54">.</font><font color="#d35400">attach</font><font color="#000000">(</font><font color="#000000">9</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; attaches the servo on pin 9 to the servo object</font>
+                 &nbsp;<font color="#000000">myServo</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font><font color="#434f54">&#47;&#47;keeps the servo from moving during the calibration phase of the code</font>
+                
+                 &nbsp;<font color="#434f54">&#47;&#47; first five seconds: calibrate!</font>
+                 &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">LED_PIN</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+                 &nbsp;<font color="#434f54">&#47;&#47;loops through for the first 5 seconds</font>
+                 &nbsp;<font color="#5e6d03">while</font> <font color="#000000">(</font><font color="#d35400">millis</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#434f54">&lt;</font> <font color="#000000">5000</font><font color="#000000">)</font> <font color="#000000">{</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#000000">sensorValue</font> <font color="#434f54">=</font> <font color="#000000">cs_4_2</font><font color="#434f54">.</font><font color="#d35400">capacitiveSensor</font><font color="#000000">(</font><font color="#000000">30</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;</font>
+                
+                 &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; check for sensor Max</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">sensorValue</font> <font color="#434f54">&gt;</font> <font color="#000000">sensorMax</font><font color="#000000">)</font> <font color="#000000">{</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">sensorMax</font> <font color="#434f54">=</font> <font color="#000000">sensorValue</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;sets highest to the max value </font>
+                 &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+                
+                 &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; record the minimum sensor value</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">sensorValue</font> <font color="#434f54">&lt;</font> <font color="#000000">sensorMin</font><font color="#000000">)</font> <font color="#000000">{</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">sensorMin</font> <font color="#434f54">=</font> <font color="#000000">sensorValue</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;sets sensor min to the lowest sensor value</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+                 &nbsp;<font color="#000000">}</font>
+                 &nbsp;<font color="#434f54">&#47;&#47; turns off led </font>
+                 &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">LED_PIN</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+                
+                <font color="#000000">}</font>
+                
+                <font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font>
+                <font color="#000000">{</font>
+                 &nbsp;<font color="#434f54">&#47;&#47;reads the value of the capacitor</font>
+                 &nbsp;<font color="#000000">sensorValue</font> <font color="#434f54">=</font> <font color="#000000">cs_4_2</font><font color="#434f54">.</font><font color="#d35400">capacitiveSensor</font><font color="#000000">(</font><font color="#000000">30</font><font color="#000000">)</font><font color="#000000">;</font>
+                 &nbsp;<font color="#434f54">&#47;&#47;prints the min and max sensor value </font>
+                 &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;my sensor value is between &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+                 &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">sensorMin</font><font color="#000000">)</font><font color="#000000">;</font>
+                 &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34; and &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+                 &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#000000">sensorMax</font><font color="#000000">)</font><font color="#000000">;</font>
+                 &nbsp;<font color="#434f54">&#47;&#47; prints the current reading of the capcitive snesor </font>
+                 &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;I&#39;m reading: &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+                 &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#000000">sensorValue</font><font color="#000000">)</font><font color="#000000">;</font>
+                 &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+                 &nbsp;<font color="#434f54">&#47;&#47; wait for a little while to read.</font>
+                 &nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+                 &nbsp;<font color="#434f54">&#47;&#47; maps sensor values to led scale</font>
+                 &nbsp;<font color="#000000">sensorValue</font> <font color="#434f54">=</font> <font color="#d35400">map</font><font color="#000000">(</font><font color="#000000">sensorValue</font><font color="#434f54">,</font> <font color="#000000">sensorMin</font><font color="#434f54">,</font> <font color="#000000">sensorMax</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#434f54">,</font> <font color="#000000">255</font><font color="#000000">)</font><font color="#000000">;</font>
+                 &nbsp;<font color="#434f54">&#47;&#47;constrains sensor value to led scale (rgb power)</font>
+                 &nbsp;<font color="#000000">sensorValue</font> <font color="#434f54">=</font> <font color="#d35400">constrain</font><font color="#000000">(</font><font color="#000000">sensorValue</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#434f54">,</font> <font color="#000000">255</font><font color="#000000">)</font><font color="#000000">;</font>
+                 &nbsp;<font color="#434f54">&#47;&#47;analog sets the capacitor sensor value </font>
+                 &nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">LED_PIN</font><font color="#434f54">,</font> <font color="#000000">sensorValue</font><font color="#000000">)</font><font color="#000000">;</font>
+                <font color="#434f54">&#47;&#47; maps the sensor value to the 0-180 for the servo </font>
+                 &nbsp;<font color="#000000">sensorValue</font> <font color="#434f54">=</font> <font color="#d35400">map</font><font color="#000000">(</font><font color="#000000">sensorValue</font><font color="#434f54">,</font> <font color="#000000">sensorMin</font><font color="#434f54">,</font> <font color="#000000">sensorMax</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#434f54">,</font> <font color="#000000">180</font><font color="#000000">)</font><font color="#000000">;</font>
+                 &nbsp;<font color="#434f54">&#47;&#47;constrains the servo value 0 to 180</font>
+                 &nbsp;<font color="#000000">sensorValue</font> <font color="#434f54">=</font> <font color="#d35400">constrain</font><font color="#000000">(</font><font color="#000000">sensorValue</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#434f54">,</font> <font color="#000000">180</font><font color="#000000">)</font><font color="#000000">;</font>
+                 &nbsp;<font color="#434f54">&#47;&#47;sets servo value from the sensor </font>
+                 &nbsp;<font color="#000000">myServo</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">sensorValue</font><font color="#000000">)</font><font color="#000000">;</font>
+                <font color="#434f54">&#47;&#47;waits 15 miliseconds to move servo!</font>
+                 &nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">15</font><font color="#000000">)</font><font color="#000000">;</font>
+                
+                
+                
+                <font color="#000000">}</font>
+                
+                </pre>  
+        </div>
+        
+        <a class="button" href="index.html">Go Home</a> 
+    </body>
+</html>
