@@ -1,0 +1,272 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>A4: Capacitor</title> 
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head> 
+    <body> 
+
+        <div class="header">
+            <h1>Joystick Color Selector  </h1>
+            <p>
+           Using the joystick, and a square "color wheel" I created this color selector. When you press the joystick button, while hovering over a color, the rgb takes the color sample the user selected, and changes the LED color.
+           It also lights up with a "pressed" in the color that has been selected on the screen. 
+            </p>
+            <p>
+              <figure id="schematic">
+                <img src="a6schematic.jpg"  alt="Schematic and Ohms Law Calculations" >
+                <figcaption>Fig.1 - The Schematic and Ohms Law Calculations.</figcaption>
+              </figure>  
+             
+              <figure>
+                <img src="a6circuit.jpg" alt="the circuit layout" width="100px">
+                <figcaption>Fig.2 - The circuit wires and arduino </figcaption>
+              </figure> 
+              <figure>
+                <img src="runninga6.gif">
+                <figcaption>Fig.3 - Color Selection! </figcaption>
+              </figure>
+            
+           
+            </p>
+             <h1> The Arduino Code</h1>
+            <pre>
+              <font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><font color="#000000">ArduinoJson</font><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+              <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">sw</font> <font color="#434f54">=</font> <font color="#000000">A0</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;sets up the joystick button to pin A0</font>
+              <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">vry</font> <font color="#434f54">=</font> <font color="#000000">A1</font><font color="#000000">;</font>
+              <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">vrx</font> <font color="#434f54">=</font> <font color="#000000">A2</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;</font>
+              <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">b</font> <font color="#434f54">=</font> <font color="#000000">3</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;blue led leg</font>
+              <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">g</font> <font color="#434f54">=</font> <font color="#000000">5</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;green led leg</font>
+              <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">r</font> <font color="#434f54">=</font> <font color="#000000">6</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;red led leg</font>
+              
+              <font color="#00979c">int</font> <font color="#000000">buttonState</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+              <font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+               &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">9600</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; initialize serial communications</font>
+               &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">setTimeout</font><font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set the timeout for parseInt</font>
+               &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">r</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font><font color="#434f54">&#47;&#47;sets red led leg as output</font>
+               &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">g</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;sets the green led leg as output</font>
+               &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">b</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font><font color="#434f54">&#47;&#47;setrs the blue led leg as output</font>
+               &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">sw</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;sets the button in the joystick as an input</font>
+               &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">vry</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;sets the y leg of the joystick as input</font>
+               &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">vrx</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; sets the x leg of the joystick as input</font>
+              <font color="#000000">}</font>
+              
+              <font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+               &nbsp;<font color="#000000">buttonState</font> <font color="#434f54">=</font> <font color="#d35400">analogRead</font><font color="#000000">(</font><font color="#000000">sw</font><font color="#000000">)</font><font color="#000000">;</font>
+               &nbsp;<font color="#00979c">int</font> <font color="#000000">s1</font> <font color="#434f54">=</font> <font color="#d35400">analogRead</font><font color="#000000">(</font><font color="#000000">vrx</font><font color="#000000">)</font> <font color="#434f54">&#47;</font><font color="#000000">1.65</font><font color="#000000">;</font>
+               &nbsp;<font color="#00979c">int</font> <font color="#000000">s2</font> <font color="#434f54">=</font> <font color="#d35400">analogRead</font><font color="#000000">(</font><font color="#000000">vry</font><font color="#000000">)</font> <font color="#434f54">&#47;</font><font color="#000000">1.65</font><font color="#000000">;</font>
+               &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;[&#34;</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;prints the opening bracket for the json</font>
+               &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">s1</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;prints the x value</font>
+               &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;,&#34;</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; comma for json syntax</font>
+               &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">s2</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;prints the y vlaue </font>
+               &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;,&#34;</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;comma for json syntax</font>
+               &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">buttonState</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;prints button state </font>
+               &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#005c5f">&#34;]&#34;</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; ends json </font>
+               &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">available</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#434f54">&gt;</font> <font color="#000000">0</font><font color="#000000">)</font> <font color="#000000">{</font> &nbsp;&nbsp;<font color="#434f54">&#47;&#47; if there&#39;s serial data</font>
+               &nbsp;&nbsp;&nbsp;<font color="#00979c">int</font> <font color="#000000">inByte</font> <font color="#434f54">=</font> <b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">read</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; read it</font>
+               &nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">inByte</font> <font color="#434f54">==</font> <font color="#000000">0</font><font color="#000000">)</font> <font color="#000000">{</font> <font color="#434f54">&#47;&#47;red</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">r</font><font color="#434f54">,</font> <font color="#000000">255</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set r</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">g</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set g</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">b</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set b</font>
+               &nbsp;&nbsp;&nbsp;<font color="#000000">}</font> <font color="#5e6d03">else</font> <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">inByte</font> <font color="#434f54">==</font> <font color="#000000">1</font><font color="#000000">)</font> <font color="#000000">{</font> <font color="#434f54">&#47;&#47;orange</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">r</font><font color="#434f54">,</font> <font color="#000000">255</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set r</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">g</font><font color="#434f54">,</font> <font color="#000000">125</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set g</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">b</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set b</font>
+               &nbsp;&nbsp;&nbsp;<font color="#000000">}</font> <font color="#5e6d03">else</font> <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">inByte</font> <font color="#434f54">==</font> <font color="#000000">2</font><font color="#000000">)</font> <font color="#000000">{</font> <font color="#434f54">&#47;&#47;yellow</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">r</font><font color="#434f54">,</font> <font color="#000000">255</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set r</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">g</font><font color="#434f54">,</font> <font color="#000000">255</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set g</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">b</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set b</font>
+               &nbsp;&nbsp;&nbsp;<font color="#000000">}</font> <font color="#5e6d03">else</font> <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">inByte</font> <font color="#434f54">==</font> <font color="#000000">3</font><font color="#000000">)</font> <font color="#000000">{</font> <font color="#434f54">&#47;&#47;green</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">r</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set r</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">g</font><font color="#434f54">,</font> <font color="#000000">255</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set g</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">b</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set b</font>
+               &nbsp;&nbsp;&nbsp;<font color="#000000">}</font> <font color="#5e6d03">else</font> <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">inByte</font> <font color="#434f54">==</font> <font color="#000000">4</font><font color="#000000">)</font> <font color="#000000">{</font> <font color="#434f54">&#47;&#47;cyan</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">r</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set r</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">g</font><font color="#434f54">,</font> <font color="#000000">255</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set g</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">b</font><font color="#434f54">,</font> <font color="#000000">255</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set b</font>
+               &nbsp;&nbsp;&nbsp;<font color="#000000">}</font> <font color="#5e6d03">else</font> <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">inByte</font> <font color="#434f54">==</font> <font color="#000000">5</font><font color="#000000">)</font> <font color="#000000">{</font> <font color="#434f54">&#47;&#47;blue</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">r</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set r</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">g</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set g</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">b</font><font color="#434f54">,</font> <font color="#000000">255</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set b</font>
+               &nbsp;&nbsp;&nbsp;<font color="#000000">}</font> <font color="#5e6d03">else</font> <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">inByte</font> <font color="#434f54">==</font> <font color="#000000">6</font><font color="#000000">)</font> <font color="#000000">{</font> <font color="#434f54">&#47;&#47;violet</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">r</font><font color="#434f54">,</font> <font color="#000000">125</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set r</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">g</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set g</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">b</font><font color="#434f54">,</font> <font color="#000000">255</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set b</font>
+               &nbsp;&nbsp;&nbsp;<font color="#000000">}</font> <font color="#5e6d03">else</font> <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">inByte</font> <font color="#434f54">==</font> <font color="#000000">7</font><font color="#000000">)</font> <font color="#000000">{</font><font color="#434f54">&#47;&#47;magenta</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">r</font><font color="#434f54">,</font> <font color="#000000">255</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set r</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">g</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set g</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">b</font><font color="#434f54">,</font> <font color="#000000">255</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set b</font>
+               &nbsp;&nbsp;&nbsp;<font color="#000000">}</font> <font color="#5e6d03">else</font> <font color="#000000">{</font> <font color="#434f54">&#47;&#47;off</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">r</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set r</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">g</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set g</font>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">b</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; set b</font>
+               &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+               &nbsp;<font color="#000000">}</font>
+               &nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;slight delay </font>
+              <font color="#000000">}</font>
+              
+              </pre>
+              <h1> The P5.js Code </h1> 
+              <pre>
+                var serial; // variable to hold an instance of the serialport library
+                var portName = 'COM3' //rename to the name of your port
+                var datain; //some data coming in over serial!
+                let xPos = 0; //tracks the x position of the joystick
+                let yPos = 0; // tracks the y position of the joystick 
+                
+                dataarray = [];//tracks the serial information from the arduino regarding x,y, and button state
+                
+                
+                function setup() {
+                  serial = new p5.SerialPort();       // make a new instance of the serialport library
+                  serial.on('list', printList);       // set a callback function for the serialport list event
+                  serial.on('connected', serverConnected); // callback for connecting to the server
+                  serial.on('open', portOpen);        // callback for the port opening
+                  serial.on('data', serialEvent);     // callback for when new data arrives
+                  serial.on('error', serialError);    // callback for errors
+                  serial.on('close', portClose);      // callback for the port closing
+                 
+                  serial.list();                      // list the serial ports
+                  serial.open(portName);              // open a serial port
+                  createCanvas(1022, 1022); //creates a canvas
+                  background(0x08, 0x16, 0x40); 
+                  
+                
+                }
+                 
+                // get the list of ports:
+                function printList(portList) {
+                 // portList is an array of serial port names
+                 for (var i = 0; i < portList.length; i++) {
+                 // Display the list the console:
+                   print(i + " " + portList[i]);
+                 }
+                }
+                //connects tol the server and prints a success message
+                function serverConnected() {
+                  print('connected to server.');
+                }
+                 //opens the port 
+                function portOpen() {
+                  print('the serial port opened.')
+                }
+                
+                //handles serial errors
+                function serialError(err) {
+                  print('Something went wrong with the serial port. ' + err);
+                }
+                
+                //closes port
+                function portClose() {
+                  print('The serial port closed.');
+                }
+                
+                //gets information from the serial reader from arduino and turns it into a json object
+                function serialEvent() {
+                  if (serial.available()) {
+                  var datastring = serial.readLine(); // readin some serial
+                  var newarray;
+                  try {
+                      newarray = JSON.parse(datastring); // can we parse the serial
+                    } catch(err) {
+                          //console.log(err);
+                  }
+                  if (typeof(newarray) == 'object') {
+                      dataarray = newarray;
+                  }
+                  console.log("got back " + datastring);
+                  }
+                }
+                //draws the stuff on the page 
+                function draw() {
+                
+                  background(255);
+                  fill(255,0,0); // red
+                  rect(100, 100, 100, 100); //(100,100)
+                  fill(255,125,0);// orange
+                  rect(300, 100, 100, 100);//(300,100)
+                  fill(255,255,0); //yellow
+                  rect(500, 100, 100, 100);//(500,100)
+                  fill(0,255,0); //green
+                  rect(500, 300, 100, 100);//(500,300)
+                  fill(0,255,255); // cyan
+                  rect(500, 500, 100, 100);//(500,500)
+                  fill(0,0,255); // blue
+                  rect(300, 500, 100, 100);//(300,500)
+                  fill(125,0,255); //violet
+                  rect(100, 500, 100, 100);//(100,500)
+                  fill(255,0,255); //magenta
+                  rect(100, 300, 100, 100);//(100,300)
+                
+                  fill(255,125,255); //makes the cursor color black
+                  // cursor info x loc and y loc from the array
+                  xPos = dataarray[0];
+                  yPos =dataarray[1];
+                  //sets text to black
+                  fill(0);
+                  //prints location of cursor
+                  text(xPos, 30, 30);
+                  text(yPos, 30, 50);
+                  //draws the cursor shape
+                  ellipse(xPos, yPos, 10, 10);
+                // the following conditional checks for clicks on the colored boxes, and changes the light accordingly
+                    //red square
+                    if( dataarray[2] < 90 && xPos < 200 && xPos > 100 && yPos < 200 && yPos > 100) {
+                      serial.write(0); 
+                      fill(255,0,0);
+                      text("PRESSED", 30, 70);
+                  //orange square  
+                  } else if(dataarray[2] < 90 && xPos > 300 && xPos < 400 && yPos < 200 && yPos > 100){
+                    serial.write(1); 
+                    fill(255,125,0);// orange
+                    text("PRESSED", 30, 70); 
+                  // violet
+                  } else  if(dataarray[2] < 90 && xPos > 100 && xPos < 200 && yPos < 600 && yPos > 500){
+                    serial.write(6);
+                    fill(125,0,255); //violet
+                    text("PRESSED", 30, 70);  
+                  //green square
+                  } else  if(dataarray[2] < 90 && xPos > 500 && xPos < 600 && yPos < 400 && yPos > 300){
+                    serial.write(3);
+                    fill(0,255,0); //green
+                    text("PRESSED", 30, 70);  
+                  //cyan square
+                  } else  if(dataarray[2] < 90 && xPos > 500 && xPos < 600 && yPos < 600 && yPos > 500){
+                    serial.write(4);
+                    fill(0,255,255); // cyan
+                    text("PRESSED", 30, 70); 
+                  //blue 
+                  } else  if(dataarray[2] < 90 && xPos > 300 && xPos < 400 && yPos < 600 && yPos > 500){
+                    serial.write(5);
+                    fill(0,0,255); // blue
+                    text("PRESSED", 30, 70);  
+                  //yellow
+                  } else  if(dataarray[2] < 90 && xPos >500 && xPos < 600 && yPos < 200 && yPos > 100){
+                    serial.write(2);
+                    fill(255,255,0); //yellow
+                    text("PRESSED", 30, 70);  
+                  //magenta
+                  } else  if(dataarray[2] < 90 && xPos > 100 && xPos < 200 && yPos < 400 && yPos > 300){
+                    serial.write(7);
+                    fill(255,0,255); //magenta
+                    text("PRESSED", 30, 70);  
+                
+                  } else {
+                      //handles if no one is clicking on a color actively
+                  }
+                
+                
+                  
+                }
+                
+            </pre>
+        </div>
+        
+        <a class="button" href="index.html">Go Home</a> 
+    </body>
+</html>
