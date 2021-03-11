@@ -1,0 +1,223 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>A6: rgb joystick</title> 
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head> 
+    <body> 
+
+        <div class="header">
+            <h1>Joystick Color Selector  </h1>
+            <p>
+           Using the joystick, and a square "color wheel" I created this color selector. When you press the joystick button, while hovering over a color, the rgb takes the color sample the user selected, and changes the LED color.
+           It also lights up with a "pressed" in the color that has been selected on the screen. 
+            </p>
+            <p>
+              <figure id="schematic">
+                <img src="a6schematic.jpg"  alt="Schematic and Ohms Law Calculations" >
+                <figcaption>Fig.1 - The Schematic and Ohms Law Calculations.</figcaption>
+              </figure>  
+             
+              <figure>
+                <img src="a6circuit.jpg" alt="the circuit layout" width="100px">
+                <figcaption>Fig.2 - The circuit wires and arduino </figcaption>
+              </figure> 
+              <figure>
+                <img src="">
+                <figcaption>Fig.3 - Color Selection! </figcaption>
+              </figure>
+            
+           
+            </p>
+             <h1> The Arduino Code</h1>
+            <pre>
+              #include <ArduinoJson.h>
+                #include <Servo.h>
+                Servo myServo;  // create a servo object
+                const int sw = A0; //sets up the joystick button to pin A0
+                const int vry = A1; // the joystick change in y pin
+                const int vrx = A2; // the joystick to change the x pin
+                
+                int buttonState = 0;
+                void setup() {
+                  Serial.begin(9600);    // initialize serial communications
+                  Serial.setTimeout(10); // set the timeout for parseInt
+                  pinMode(sw, INPUT); //sets the button in the joystick as an input
+                  pinMode(vry, INPUT); //sets the y leg of the joystick as input
+                  pinMode(vrx, INPUT); // sets the x leg of the joystick as input
+                    myServo.attach(9); // attaches the servo on pin 9 to the servo object
+                
+                }
+                
+                void loop() {
+                  buttonState = analogRead(sw);
+                  int s1 = analogRead(vrx) / 1.65;
+                  int s2 = analogRead(vry) / 1.65;
+                  Serial.print("["); //prints the opening bracket for the json
+                  Serial.print(s1); //prints the x value
+                  Serial.print(","); // comma for json syntax
+                  Serial.print(s2); //prints the y vlaue
+                  Serial.print(","); //comma for json syntax
+                  Serial.print(buttonState); //prints button state
+                  Serial.println("]"); // ends json
+                  if (Serial.available() > 0) {   // if there's serial data
+                    int inByte = Serial.read(); // read it
+                    if (inByte == 1) {
+                     for(int i =0; i < (360 * 2); i++){
+                      myServo.write(abs(180 - i));
+                      i %= 360;
+                      
+                     }
+                  }
+                  }
+                }
+            </pre>
+              <h1> The P5.js Code </h1> 
+              <pre>
+                var serial; // variable to hold an instance of the serialport library
+                var portName = 'COM3' //rename to the name of your port
+                var datain; //some data coming in over serial!
+                let xPos = 350; //tracks the x position of the joystick
+                let yPos = 0; // tracks the y position of the joystick 
+                let playing = true;
+                dataarray = [];//tracks the serial information from the arduino regarding x,y, and button state
+                let score = 0;
+                let playerWidth = 100;
+                let playerHeight = 20;
+                let cow_x = Math.floor(Math.random() * 760);
+                let cow_y = 0;
+                let cow_speed;
+                let cow_size = 60; 
+                let bg = ["red", "orange", "yellow", "green", "blue", "purple", "pink", "black", "white"];
+                let currentColors = [ bg[Math.floor(Math.random() * bg.length)],  bg[Math.floor(Math.random() * bg.length)]];
+                let color_index = 0;
+                let img;
+                
+                function setup() {
+                  serial = new p5.SerialPort();       // make a new instance of the serialport library
+                  serial.on('list', printList);       // set a callback function for the serialport list event
+                  serial.on('connected', serverConnected); // callback for connecting to the server
+                  serial.on('open', portOpen);        // callback for the port opening
+                  serial.on('data', serialEvent);     // callback for when new data arrives
+                  serial.on('error', serialError);    // callback for errors
+                  serial.on('close', portClose);      // callback for the port closing
+                 
+                  serial.list();                      // list the serial ports
+                  serial.open(portName);              // open a serial port
+                  createCanvas(700, 800); //creates a canvas
+                  background('red'); 
+                }
+                
+                function preload() {
+                  img = loadImage('https://i1.wp.com/freepngimages.com/wp-content/uploads/2014/04/cow_1.png');
+                }
+                 
+                // get the list of ports:
+                function printList(portList) {
+                 // portList is an array of serial port names
+                 for (var i = 0; i < portList.length; i++) {
+                 // Display the list the console:
+                   print(i + " " + portList[i]);
+                 }
+                }
+                //connects tol the server and prints a success message
+                function serverConnected() {
+                  print('connected to server.');
+                }
+                 //opens the port 
+                function portOpen() {
+                  print('the serial port opened.')
+                }
+                
+                //handles serial errors
+                function serialError(err) {
+                  print('Something went wrong with the serial port. ' + err);
+                }
+                
+                //closes port
+                function portClose() {
+                  print('The serial port closed.');
+                }
+                
+                //gets information from the serial reader from arduino and turns it into a json object
+                function serialEvent() {
+                  if (serial.available()) {
+                  var datastring = serial.readLine(); // readin some serial
+                  var newarray;
+                  try {
+                      newarray = JSON.parse(datastring); // can we parse the serial
+                    } catch(err) {
+                          //console.log(err);
+                  } 
+                  if (typeof(newarray) == 'object') {
+                      dataarray = newarray;
+                  }
+                  console.log("got back " + datastring);
+                  }
+                }
+                
+                
+                //draws the stuff on the page 
+                function draw() {
+                  userX = dataarray[1];
+                  button = dataarray[2];
+                  if(button < 56) {
+                    currentColors[0] = bg[Math.floor(Math.random() * bg.length)];
+                    currentColors[1] = bg[Math.floor(Math.random() * bg.length)];
+                  }
+                  background(currentColors[0]);
+                  fill('white');
+                  rect(0, 700, 700,100);
+                  fill("black");
+                  textSize(16);
+                  text("WELCOME TO THE PHYSICAL COW-MPUTING CATCH GAME", 10, 720);
+                  text("Move the joystick to move the player left and right", 10, 750);
+                  text("Click down on the joystick to randomly shuffle the game theme ", 10, 770);
+                  textSize(34);
+                  text("score", 600, 750);
+                  text(score, 630, 780);
+                  move(userX);
+                  fill(currentColors[1]);
+                  rect(xPos, 650, playerWidth, playerHeight);
+                  createCow();
+                
+                }
+                function createCow(){
+                
+                  image(img, cow_x, cow_y +  5, 60, 60);
+                  cow_y = cow_y + 5;
+                  if(cow_y > 670) {
+                    cow_y = 0;
+                    cow_x=  Math.floor(Math.random() * 800);
+                  }
+                }
+                
+                function cowLision(){
+                  if (cow_x > userX  && (cow_x + cow_size) < (userX + playerWidth) && cow_y > userY) {
+                    //serial.write(1);
+                    score = score + 1;
+                    cow_y = 0;
+                    cow_x =  Math.floor(Math.random() * 800);
+                    
+                  } 
+                }
+                //moves the player left and right
+                function move(x) {
+                  if( x < 200  && xPos < 600) {
+                    xPos = xPos + 5;
+                  }
+                  if ( x >500 && xPos > 0) {
+                    xPos = xPos - 5;
+                  } 
+                }
+            </pre>
+        </div>
+        
+        <a class="button" href="index.html">Go Home</a> 
+    </body>
+</html>
