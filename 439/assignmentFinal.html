@@ -16,14 +16,14 @@
   <div class="header">
     <h1>Physical Cow-mputing </h1>
     <p>
-      <em> Overview </em>
+      <em> Overview: </em>
       A joystick, embedded into a cow stuffed animal creates the controller for a silly "catch the falling cow" game implemented through p5.js
       The cow is crochet and the right arm has a servo motor (to mimic a rumble motor which vibrates to give user game feedback) and a joystick to control the game that the cow is connected to.
     </p>
       <br />
   
    <p>
-     <em> Technical implementation</em>
+     <em> Technical implementation: </em>
       Using serial communications with p5.js, the arduino embedded into the cow stuffed animal will send a json object containging the joysticks x position, y position, and the state of the button. 
       When the x position is small enough to be pointing to the left or the x position is large enough to be pointing to the left, it changes the x position of the cursor. When there is a collision on screen, a 1 is sent to the arduino 
       to tell the servo motor to move back and forth to make a vibration!  
