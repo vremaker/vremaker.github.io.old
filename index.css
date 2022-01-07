@@ -74,3 +74,12 @@ h1 {
 .text {
   text-align: center;
 }
+
+#about {
+  height: 100vh;
+  background-color: olivedrab;
+}
+.about-img {
+  height: 35%;
+  width:auto;
+}
