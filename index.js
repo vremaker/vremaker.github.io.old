@@ -94,11 +94,12 @@
       });
     }
     id("logo").addEventListener("click",()=>{
-         id("landing").classList.remove("hidden");
+        id("landing").classList.remove("hidden");
         id("about").classList.remove("hidden");
         id("portfolio").classList.remove("hidden");
         id("contact").classList.remove("hidden");
-        id("text -view").classList.add("hidden");
+        id("text-view").classList.add("hidden");
+     
     });
     let tiles = qsa(".image-container");
     for(let i = 0; i < tiles.length; i ++) {
