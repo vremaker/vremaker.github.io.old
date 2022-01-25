@@ -2,6 +2,14 @@
   "use strict";
   
   const PROEJECT_DETAILS = {
+    "on-trak": {
+      "short-name": "on-trak",
+      "title": "Troubleshooting with OnTrak",
+      "description": "A simple, fun, and easy to use troublehshooting applicaiton designed to empower product users resolve common hardware issues without calling customer service for help.",
+      "links": [
+        "Process Blog","https://vremaker.medium.com/troubleshooting-with-ontrak-337f0e08179e"
+      ]
+  },
     "crochet-buddy": {
       "short-name": "crochet-buddy",
       "title": "Crochet Buddy",
@@ -32,7 +40,22 @@
       "description": "As a project, in an advanced design class offered through the HCDE Department at The University of Washington, I redesigned Seattle Public Transit. This redesign started with user research, to understand the audience of Seattle Public Transit in order to design for the actual audience. Next, came the creation of six tasks that a user on Seattle Public Transit would complete. Three of these tasks would be designed for a mobile platform, and three of these tasks would be made for a kiosk interaction which would be located at a transit stop. Next, there were diagrams of user flows, to understand how the user would interact with the system while completing their tasks. Then, we created low fidelity wireframes to understand and test the layout of these interactions. Then, we created mood boards and picked a typographic hierarchy and a color scheme. Finally, we created high fidelity wireframes which showcased the fully designed interactions.",
       "links": ["Process Blog","https://vremaker.medium.com/seattle-public-transit-brand-redesign-5ce950b8513"]
     },
-    "workbook": {
+    "night-owl": {
+      "short-name": "night-owl",
+      "title": "Night Owl ",
+      "description": "This project spanned 11 weeks in our HCDE 318 (Introduction to User Centered Design) course, in Autumn 2019. As a team of 4, we applied the user centered design process to the problem area of the danger of walking alone at night for students. The process culminated in a mobile application called Night Owl that gives students confidence and control when walking alone at night.",
+       "links": ["Process Blog", "https://vremaker.medium.com/meet-night-owl-2cddf92d1b61"]
+    },
+    "common-ground": {
+      "short-name": "common-ground",
+      "title": "Common Ground: People Over Politics",
+      "description": "For the HCDE democracy design jam of 2020, a 24 hour virtual design sprint. We designed a mobile app called Common Ground. Common Ground is designed to combat the social divisions that were weaponized in the 2016 election It humanizes the “opposing side” by focusing on what people have in common, rather than political strategy. Politics have become increasingly polarized in recent years. In many ways, COVID-19 has deepened this political divide: Our team wondered: In a country divided by politics and physical isolation, how can people connect and find common ground with each other?", 
+      "links": ["Process Blog", "https://vremaker.medium.com/common-ground-fa5eebd326a"]
+    }
+
+  };
+  /* No longer in use? 
+   "workbook": {
       "short-name": "workbook",
       "title": "Human Centered Design Charrette Workbook",
       "description": "As a hands-on charrette, our project encourages students to engage with the prompt physically, using materials that they can likely find at home. This might be helpful for kids who are tired of working virtually, and enjoy concrete activities. The charrette asks students to ‘design a mobile application for a group of people with similar interests.’ Not only is this prompt universal enough that we run the same challenge in K-12 classrooms that we do with our university students, but it’s broad enough for you to tailor to your current lesson plan.",
@@ -47,26 +70,13 @@
       "description": "Refugee Women's Alliance is a non-profit in Seattle with a focus on providing programs refugee women and their families. Over the course of 6 weeks, I adapted the existing color scheme for the brand, as well as the logo, iconography, and typography.",
       "links": ["Process Blog","https://medium.com/p/43658536ecd9"]
     },
-    "night-owl": {
-      "short-name": "night-owl",
-      "title": "Night Owl ",
-      "description": "This project spanned 11 weeks in our HCDE 318 (Introduction to User Centered Design) course, in Autumn 2019. As a team of 4, we applied the user centered design process to the problem area of the danger of walking alone at night for students. The process culminated in a mobile application called Night Owl that gives students confidence and control when walking alone at night.",
-       "links": ["Process Blog", "https://vremaker.medium.com/meet-night-owl-2cddf92d1b61"]
-    },
-    "common-ground": {
-      "short-name": "common-ground",
-      "title": "Common Ground: People Over Politics",
-      "description": "For the HCDE democracy design jam of 2020, a 24 hour virtual design sprint. We designed a mobile app called Common Ground. Common Ground is designed to combat the social divisions that were weaponized in the 2016 election It humanizes the “opposing side” by focusing on what people have in common, rather than political strategy. Politics have become increasingly polarized in recent years. In many ways, COVID-19 has deepened this political divide: Our team wondered: In a country divided by politics and physical isolation, how can people connect and find common ground with each other?", 
-      "links": ["Process Blog", "https://vremaker.medium.com/common-ground-fa5eebd326a"]
-    },
-    "feline-groovy": {
+       "feline-groovy": {
       "short-name": "feline-groovy",
       "title": "Feline Groovy",
       "description": "An exploration of the Reddit API to create a website that serves users memes and cat pictures from reddit. This webiste uses HTML, CSS, and Javascript.",
       "links": ["View the Site", "https://students.washington.edu/vremaker/felineGroovy/"]
     }
-  };
-  //
+  */
 
   window.addEventListener("load", init);
  function init() {
