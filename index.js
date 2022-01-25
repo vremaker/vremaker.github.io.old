@@ -5,7 +5,7 @@
     "on-trak": {
       "short-name": "on-trak",
       "title": "Troubleshooting with OnTrak",
-      "description": "A simple, fun, and easy to use troublehshooting applicaiton designed to empower product users resolve common hardware issues without calling customer service for help.",
+      "description": "A simple, fun, and easy to use troubleshooting application designed to empower product users resolve common hardware issues without calling customer service for help.",
       "links": [
         "Process Blog","https://vremaker.medium.com/troubleshooting-with-ontrak-337f0e08179e"
       ]
